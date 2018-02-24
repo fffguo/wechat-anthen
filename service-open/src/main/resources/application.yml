@@ -4,29 +4,22 @@ eureka:
       defaultZone: http://localhost:8888/eureka/
 server:
   port: 9999
+
 spring:
   application:
     name: service-open
-
-#spring:
-#  redis:
-#    host: 10.180.14.23
-#    port: 6379
-#    timeout: 0
-#    pool:
-#      max-active: 8
-#      max-wait: 1
-#      max-idle: 8
-#  http:
-#    encoding:
-#      charset: UTF-8
-#      enabled: true
-#  thymeleaf:
-#    prefix: classpath:/templates/
-#    suffix: .html
-#    mode: HTML5
-#    encoding: UTF-8
-#    content-type: text/html; charset=utf-8
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 0
+    pool:
+      max-active: 8
+      max-wait: 1
+      max-idle: 8
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
 
 yzy:
   wechat:

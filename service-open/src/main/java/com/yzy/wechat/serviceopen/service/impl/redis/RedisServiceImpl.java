@@ -2,7 +2,6 @@ package com.yzy.wechat.serviceopen.service.impl.redis;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 
 import com.yzy.wechat.serviceopen.service.redis.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 
 @Service
