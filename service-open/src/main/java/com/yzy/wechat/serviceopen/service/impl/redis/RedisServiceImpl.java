@@ -16,46 +16,46 @@ import javax.annotation.Resource;
 @Service
 public class RedisServiceImpl implements RedisService {
 
-	@Autowired
-	private StringRedisTemplate stringRedisTemplate;
-	
-	@Resource(name = "stringRedisTemplate")
-	private ValueOperations<Object, Object> valOpsStr;
-	
-	@Autowired
-	private RedisTemplate<Object, Object>  redisTemplate;
-	
-	@Resource("redisTemplate")
-	private ValueOperations<Object, Object> valOps;
-	
-	@Override
-	public void del(List<String> keys) {
-		stringRedisTemplate.delete(keys);
-	}
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
-	@Override
-	public void set(byte[] key, byte[] value, long liveTime) {
-		valOps.set(key, value, liveTime);
-	}
+    @Resource(name = "stringRedisTemplate")
+    private ValueOperations<Object, Object> valOpsStr;
 
-	@Override
-	public void set(String key, String value, long liveTime) {
-		valOpsStr.set(key, value, liveTime);
-	}
+    @Autowired
+    private RedisTemplate<Object, Object> redisTemplate;
 
-	@Override
-	public void set(String key, String value) {
-		valOpsStr.set(key, value);
-	}
+    @Resource(name = "redisTemplate")
+    private ValueOperations<Object, Object> valOps;
 
-	@Override
-	public void set(byte[] key, byte[] value) {
-		valOps.set(key, value);
-	}
+    @Override
+    public void del(List<String> keys) {
+        stringRedisTemplate.delete(keys);
+    }
 
-	@Override
-	public String get(String key) {
-		return String.valueOf(valOpsStr.get(key));
-	}
+    @Override
+    public void set(byte[] key, byte[] value, long liveTime) {
+        valOps.set(key, value, liveTime);
+    }
+
+    @Override
+    public void set(String key, String value, long liveTime) {
+        valOpsStr.set(key, value, liveTime);
+    }
+
+    @Override
+    public void set(String key, String value) {
+        valOpsStr.set(key, value);
+    }
+
+    @Override
+    public void set(byte[] key, byte[] value) {
+        valOps.set(key, value);
+    }
+
+    @Override
+    public String get(String key) {
+        return String.valueOf(valOpsStr.get(key));
+    }
 
 }
