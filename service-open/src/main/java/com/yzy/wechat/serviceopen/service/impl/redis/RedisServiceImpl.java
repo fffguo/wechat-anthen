@@ -19,13 +19,13 @@ public class RedisServiceImpl implements RedisService {
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
 	
-	@Resource(name="stringRedisTemplate")
+	@Resource(name = "stringRedisTemplate")
 	private ValueOperations<Object, Object> valOpsStr;
 	
 	@Autowired
 	private RedisTemplate<Object, Object>  redisTemplate;
 	
-	@Resource(name="redisTemplate")
+	@Resource("redisTemplate")
 	private ValueOperations<Object, Object> valOps;
 	
 	@Override

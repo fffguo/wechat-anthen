@@ -23,11 +23,11 @@ spring:
 
 yzy:
   wechat:
-    appid: wxb70ffa75767f648e
-    appsecret: fa07f7a441a18bba2d3dab594b7c368f
+    appid: wx111f1b7437e708dd
+    appsecret: e12860f0ce3d177f39e2160a0c8286c1
   paywechat:
-    appid: wxb70ffa75767f648e
-    appsecret: fa07f7a441a18bba2d3dab594b7c368f
+    appid: wx111f1b7437e708dd
+    appsecret: e12860f0ce3d177f39e2160a0c8286c1
 
 logging:
   config: classpath:logback.xml

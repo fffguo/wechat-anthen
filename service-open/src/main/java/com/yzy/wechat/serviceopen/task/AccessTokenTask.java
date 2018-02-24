@@ -24,7 +24,8 @@ public class AccessTokenTask {
 	@Value(value = "${yzy.wechat.appsecret}")
 	private String yzyWechatAppsecret;
 
-	public final static long SCHEDULED_TIME = 20 * 60 * 1000;
+	public final static long SCHEDULED_TIME = 10;
+//	public final static long SCHEDULED_TIME = 20 * 60 * 1000;
 
     /**
      * 获取微信Token
