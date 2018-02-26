@@ -6,6 +6,11 @@ server:
   port: 9999
 
 spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/wechat
+    username: root
+    password: root
   application:
     name: service-open
   redis:
@@ -31,5 +36,16 @@ yzy:
 
 logging:
   config: classpath:logback.xml
+
+#开启驼峰转换
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+
+
+
+
 
 
