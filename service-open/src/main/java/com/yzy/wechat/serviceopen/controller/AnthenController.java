@@ -84,7 +84,6 @@ public class AnthenController {
 		return "";
 	}
 
-
 	@RequestMapping("/getGlobalAccessToken")
 	@ResponseBody
 	public String getGlobalAccessToken(){

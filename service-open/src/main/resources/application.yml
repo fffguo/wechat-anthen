@@ -7,10 +7,27 @@ server:
 
 spring:
   datasource:
+    name: pay
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://10.167.3.151:3306/new_retail_db
+    username: wuye
+    password: wuye
+    # 使用druid数据源
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/wechat
-    username: root
-    password: root
+    filters: stat,wall
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    logSlowSql: true
   application:
     name: service-open
   redis:

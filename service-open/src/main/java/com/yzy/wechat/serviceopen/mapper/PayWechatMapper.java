@@ -3,10 +3,8 @@ package com.yzy.wechat.serviceopen.mapper;
 import com.yzy.wechat.serviceopen.entity.PayWechat;
 import com.yzy.wechat.serviceopen.entity.PayWechatExample;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-@Mapper
+
 public interface PayWechatMapper {
     long countByExample(PayWechatExample example);
 
