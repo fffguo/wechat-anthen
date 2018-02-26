@@ -1,9 +1,11 @@
 package com.yzy.wechat.serviceopen.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.yzy.wechat.serviceopen.service.redis.RedisService;
 import com.yzy.wechat.serviceopen.util.HttpSend;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,9 @@ public class AnthenController {
 	
 	@Value(value = "${yzy.paywechat.appsecret}")
 	private String yzyWechatAppsecret;
+
+	@Autowired
+	private RedisService redisService;
 	
 	@RequestMapping("/accessPayAnthen")
 	public String accessAnthen(HttpServletRequest request){
@@ -74,6 +79,46 @@ public class AnthenController {
 			String openid = tokenJson.getString("openid");
 			return openid;
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+
+	@RequestMapping("/getGlobalAccessToken")
+	@ResponseBody
+	public String getGlobalAccessToken(){
+		logger.info("正在获取全局access_token");
+		try{
+			return redisService.get("wx_access_token_yzy");
+		}catch (Exception e){
+			logger.error("获取全局access_token失败");
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	@RequestMapping("/getJsapiTicket")
+	@ResponseBody
+	public String getJsapiTicket(){
+		logger.info("正在获取jsapi_ticket");
+		try{
+			return redisService.get("wx_jsapi_ticket_yzy");
+		}catch (Exception e){
+			logger.error("正在获取jsapi_ticket失败");
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	@RequestMapping("/getApiTicket")
+	@ResponseBody
+	public String getApiTicket(){
+		logger.info("正在获取api_ticket");
+		try{
+			return redisService.get("wx_api_ticket_yzy");
+		}catch (Exception e){
+			logger.error("正在获取api_ticket失败");
 			e.printStackTrace();
 		}
 		return "";
