@@ -5,6 +5,7 @@ import com.yzy.wechat.serviceopen.ResultBean.ServiceResponse;
 import com.yzy.wechat.serviceopen.ResultBean.response.GetApiTicketResponse;
 import com.yzy.wechat.serviceopen.ResultBean.response.GetGlobalAccessTokenResponse;
 import com.yzy.wechat.serviceopen.ResultBean.response.GetJsApiTicketResponse;
+import com.yzy.wechat.serviceopen.ResultBean.response.GetOpenId;
 import com.yzy.wechat.serviceopen.entity.Wechat;
 import com.yzy.wechat.serviceopen.service.redis.RedisService;
 import com.yzy.wechat.serviceopen.service.impl.wechat.WechatServiceImpl;
@@ -77,7 +78,7 @@ public class AnthenController {
 	
 	@RequestMapping("/getOpenId")
 	@ResponseBody
-	public String getOpenId(HttpServletRequest request){
+	public ServiceResponse<GetOpenId> getOpenId(HttpServletRequest request){
 		logger.info("正在获取用户授权信息");
 		try {
 		    //获取pay appid appsecret
@@ -91,11 +92,12 @@ public class AnthenController {
 			String tokenRes = HttpSend.sendGet(access_token_url,"json");
 			JSONObject tokenJson = (JSONObject) JSONObject.parse(tokenRes);
 			String openid = tokenJson.getString("openid");
-			return openid;
+			return ServiceResponseUtil.success(new GetOpenId(openid));
 		} catch (Exception e) {
+		    logger.error("获取openid失败");
 			e.printStackTrace();
 		}
-		return "";
+		return ServiceResponseUtil.error("获取openid失败");
 	}
 
 	@RequestMapping("/getGlobalAccessToken")
@@ -108,7 +110,7 @@ public class AnthenController {
 			logger.error("获取全局access_token失败");
 			e.printStackTrace();
 		}
-		return null;
+		return ServiceResponseUtil.error("获取全局access_token失败");
 	}
 
 	@RequestMapping("/getJsapiTicket")
@@ -118,10 +120,10 @@ public class AnthenController {
 		try{
 			return ServiceResponseUtil.success(new GetJsApiTicketResponse(redisService.get("wx_jsapi_ticket_yzy")));
 		}catch (Exception e){
-			logger.error("正在获取jsapi_ticket失败");
+			logger.error("获取jsapi_ticket失败");
 			e.printStackTrace();
 		}
-		return null;
+		return ServiceResponseUtil.error("获取jsapi_ticket失败");
 	}
 
 	@RequestMapping("/getApiTicket")
@@ -131,9 +133,9 @@ public class AnthenController {
 		try{
 			return ServiceResponseUtil.success(new GetApiTicketResponse(redisService.get("wx_api_ticket_yzy")));
 		}catch (Exception e){
-			logger.error("正在获取api_ticket失败");
+			logger.error("获取api_ticket失败");
 			e.printStackTrace();
 		}
-		return null;
+		return ServiceResponseUtil.error("获取api_ticket失败");
 	}
 }
