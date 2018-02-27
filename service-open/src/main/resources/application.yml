@@ -14,7 +14,8 @@ spring:
     password: wuye
     # 使用druid数据源
     driver-class-name: com.mysql.jdbc.Driver
-    filters: stat,wall
+    filters: stat
+    #filters 去掉wall，取消防御sql注入
     maxActive: 20
     initialSize: 1
     maxWait: 60000

@@ -1,9 +1,14 @@
 package com.yzy.wechat.serviceopen.mapper;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @作者：刘富国
@@ -13,12 +18,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 public class WechatMapperTest {
 
-//    @Autowired
-//    private WechatMapper wechatMapper;
+    @Autowired
+    private WechatMapper wechatMapper;
 
     @Test
     public void findOneByStatus() {
-//        Wechat wechat=wechatMapper.selectByPrimaryKey(1);
-//        System.out.println(wechat.toString());
+        Map<String,Object> map=new HashMap<>();
+        map.put("status",1);
+        map.put("type",0);
+        System.out.println(wechatMapper.findOneByStatusAndType(map).toString());
     }
 }

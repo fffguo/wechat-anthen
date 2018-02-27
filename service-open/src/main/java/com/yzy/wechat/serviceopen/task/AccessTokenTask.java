@@ -1,12 +1,13 @@
 package com.yzy.wechat.serviceopen.task;
 
 import com.alibaba.fastjson.JSONObject;
+import com.yzy.wechat.serviceopen.entity.Wechat;
 import com.yzy.wechat.serviceopen.service.redis.RedisService;
+import com.yzy.wechat.serviceopen.service.wechat.WechatService;
 import com.yzy.wechat.serviceopen.util.HttpSend;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +18,10 @@ public class AccessTokenTask {
 
 	@Autowired
 	private RedisService redisService;
+	@Autowired
+	private WechatService wechatService;
 
-	@Value(value = "${yzy.wechat.appid}")
-	private String yzyWechatAppId;
 
-	@Value(value = "${yzy.wechat.appsecret}")
-	private String yzyWechatAppsecret;
 
 	public final static long SCHEDULED_TIME = 20 * 60 * 1000;
 
@@ -35,6 +34,10 @@ public class AccessTokenTask {
 	public void updateAccessToken() {
 		try {
 			logger.info("正在获取ACCESCE TOKEN");
+			Wechat wechat=wechatService.getWechat();
+			String yzyWechatAppId=wechat.getAppid();
+			String yzyWechatAppsecret=wechat.getAppsecret();
+
 			String getTokenUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
 					+ yzyWechatAppId + "&secret=" + yzyWechatAppsecret;
 			String tokenRes = HttpSend.sendGet(getTokenUrl, "json");

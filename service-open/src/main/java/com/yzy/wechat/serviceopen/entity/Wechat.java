@@ -72,4 +72,17 @@ public class Wechat {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+    @Override
+    public String toString() {
+        return "Wechat{" +
+                "id=" + id +
+                ", appid='" + appid + '\'' +
+                ", appsecret='" + appsecret + '\'' +
+                ", status=" + status +
+                ", type=" + type +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
+    }
 }

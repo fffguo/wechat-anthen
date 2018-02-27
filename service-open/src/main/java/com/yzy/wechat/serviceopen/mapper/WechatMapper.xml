@@ -240,4 +240,29 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findOneByStatusAndType" parameterType="map" resultType="com.yzy.wechat.serviceopen.entity.Wechat">
+    SELECT
+    id,
+    appid,
+    appsecret,
+    status,
+    type,
+    create_time,
+    update_time
+    FROM
+    `wechat`
+    WHERE
+    1=1
+    <if test="status!=null">
+      AND status = #{status}
+    </if>
+    <if test="type!=null">
+      AND type = #{type}
+    </if>
+    GROUP BY
+    update_time DESC
+    LIMIT 0,1
+  </select>
+
 </mapper>

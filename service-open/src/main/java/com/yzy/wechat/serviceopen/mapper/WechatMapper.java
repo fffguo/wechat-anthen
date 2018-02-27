@@ -3,8 +3,14 @@ package com.yzy.wechat.serviceopen.mapper;
 import com.yzy.wechat.serviceopen.entity.Wechat;
 import com.yzy.wechat.serviceopen.entity.WechatExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+
+@Component
+@Mapper
 public interface WechatMapper {
     long countByExample(WechatExample example);
 
@@ -27,4 +33,8 @@ public interface WechatMapper {
     int updateByPrimaryKeySelective(Wechat record);
 
     int updateByPrimaryKey(Wechat record);
+
+
+    /** 根据状态和wechat类型，获取wechat详情 */
+    Wechat findOneByStatusAndType(Map<String,Object> map);
 }
