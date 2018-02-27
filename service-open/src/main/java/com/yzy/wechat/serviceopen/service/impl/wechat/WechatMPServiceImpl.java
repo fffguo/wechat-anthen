@@ -1,10 +1,8 @@
-package com.yzy.wechat.serviceopen.service.wechat.impl;
+package com.yzy.wechat.serviceopen.service.impl.wechat;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yzy.wechat.serviceopen.ResultBean.ServiceResponse;
 import com.yzy.wechat.serviceopen.ResultBean.response.Get3rdSessionResponse;
-import com.yzy.wechat.serviceopen.ResultBean.response.GetApiTicketResponse;
-import com.yzy.wechat.serviceopen.controller.AnthenController;
 import com.yzy.wechat.serviceopen.entity.Wechat;
 import com.yzy.wechat.serviceopen.service.redis.RedisService;
 import com.yzy.wechat.serviceopen.service.wechat.WechatMPService;

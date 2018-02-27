@@ -2,7 +2,6 @@ package com.yzy.wechat.serviceopen.service.wechat;
 
 import com.yzy.wechat.serviceopen.ResultBean.ServiceResponse;
 import com.yzy.wechat.serviceopen.ResultBean.response.Get3rdSessionResponse;
-import com.yzy.wechat.serviceopen.ResultBean.response.GetApiTicketResponse;
 
 /**
  *  小程序实现接口
