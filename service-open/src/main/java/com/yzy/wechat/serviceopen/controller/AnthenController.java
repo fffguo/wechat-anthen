@@ -1,10 +1,15 @@
 package com.yzy.wechat.serviceopen.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.yzy.wechat.serviceopen.ResultBean.ServiceResponse;
+import com.yzy.wechat.serviceopen.ResultBean.response.GetApiTicketResponse;
+import com.yzy.wechat.serviceopen.ResultBean.response.GetGlobalAccessTokenResponse;
+import com.yzy.wechat.serviceopen.ResultBean.response.GetJsApiTicketResponse;
 import com.yzy.wechat.serviceopen.entity.Wechat;
 import com.yzy.wechat.serviceopen.service.redis.RedisService;
 import com.yzy.wechat.serviceopen.service.impl.wechat.WechatServiceImpl;
 import com.yzy.wechat.serviceopen.util.HttpSend;
+import com.yzy.wechat.serviceopen.util.ServiceResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,40 +100,40 @@ public class AnthenController {
 
 	@RequestMapping("/getGlobalAccessToken")
 	@ResponseBody
-	public String getGlobalAccessToken(){
+	public ServiceResponse<GetGlobalAccessTokenResponse> getGlobalAccessToken(){
 		logger.info("正在获取全局access_token");
 		try{
-			return redisService.get("wx_access_token_yzy");
+			return ServiceResponseUtil.success(new GetGlobalAccessTokenResponse(redisService.get("wx_access_token_yzy")));
 		}catch (Exception e){
 			logger.error("获取全局access_token失败");
 			e.printStackTrace();
 		}
-		return "";
+		return null;
 	}
 
 	@RequestMapping("/getJsapiTicket")
 	@ResponseBody
-	public String getJsapiTicket(){
+	public ServiceResponse<GetJsApiTicketResponse> getJsapiTicket(){
 		logger.info("正在获取jsapi_ticket");
 		try{
-			return redisService.get("wx_jsapi_ticket_yzy");
+			return ServiceResponseUtil.success(new GetJsApiTicketResponse(redisService.get("wx_jsapi_ticket_yzy")));
 		}catch (Exception e){
 			logger.error("正在获取jsapi_ticket失败");
 			e.printStackTrace();
 		}
-		return "";
+		return null;
 	}
 
 	@RequestMapping("/getApiTicket")
 	@ResponseBody
-	public String getApiTicket(){
+	public ServiceResponse<GetApiTicketResponse> getApiTicket(){
 		logger.info("正在获取api_ticket");
 		try{
-			return redisService.get("wx_api_ticket_yzy");
+			return ServiceResponseUtil.success(new GetApiTicketResponse(redisService.get("wx_api_ticket_yzy")));
 		}catch (Exception e){
 			logger.error("正在获取api_ticket失败");
 			e.printStackTrace();
 		}
-		return "";
+		return null;
 	}
 }
