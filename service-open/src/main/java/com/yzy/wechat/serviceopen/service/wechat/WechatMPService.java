@@ -18,6 +18,6 @@ public interface WechatMPService {
      * 判断3rd_session是否有效
      * @return
      */
-    public Boolean isValid(String session) ;
+    public ServiceResponse checkSession(String session) ;
 
 }

@@ -55,11 +55,11 @@ public class WechatMPServiceImpl implements WechatMPService{
     }
 
     @Override
-    public Boolean isValid(String session) {
+    public ServiceResponse checkSession(String session) {
         //redis缓存存在指定的3rd_session值
         if (!redisService.get(session).isEmpty()) {
-            return true ;
+            return ServiceResponseUtil.success() ;
         }
-        return false;
+        return ServiceResponseUtil.error();
     }
 }
