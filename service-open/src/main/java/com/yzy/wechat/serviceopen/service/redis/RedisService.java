@@ -1,6 +1,7 @@
 package com.yzy.wechat.serviceopen.service.redis;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public interface RedisService {
 
@@ -31,6 +32,15 @@ public interface RedisService {
 	 * @param liveTime
 	 */
 	public void set(String key, String value, long liveTime);
+
+	/**
+	 * 新增记录并设置有效时间
+	 * @param key
+	 * @param value
+	 * @param liveTime
+	 * @param timeUnit
+	 */
+	public void set(String key, String value, long liveTime, TimeUnit timeUnit);
 	
 	/**
 	 * 新增记录

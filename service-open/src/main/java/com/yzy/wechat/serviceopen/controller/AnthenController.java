@@ -48,8 +48,8 @@ public class AnthenController {
 			String code = request.getParameter("code");
 	        String[] states = state.split("_");
 	        redirectUrl = states[0];
-	        String payNo = states[1].split(":")[1];
-	        String orderId = states[2].split(":")[1];
+			String payNo = states[1].split(":")[1];
+			String orderId = states[2].split(":")[1];
 //	        String billNo = states[3].split(":")[1];
 			String access_token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";
 			access_token_url = access_token_url.replace("APPID", yzyWechatAppId).replace("SECRET", yzyWechatAppsecret).replace("CODE", code);

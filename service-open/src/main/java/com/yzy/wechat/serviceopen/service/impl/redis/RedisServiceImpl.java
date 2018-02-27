@@ -1,6 +1,7 @@
 package com.yzy.wechat.serviceopen.service.impl.redis;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 import com.yzy.wechat.serviceopen.service.redis.RedisService;
@@ -41,6 +42,11 @@ public class RedisServiceImpl implements RedisService {
     @Override
     public void set(String key, String value, long liveTime) {
         valOpsStr.set(key, value, liveTime);
+    }
+
+    @Override
+    public void set(String key, String value, long liveTime, TimeUnit timeUnit) {
+        valOpsStr.set(key, value, liveTime, timeUnit);
     }
 
     @Override
