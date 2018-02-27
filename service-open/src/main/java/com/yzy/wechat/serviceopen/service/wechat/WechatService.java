@@ -1,9 +1,5 @@
 package com.yzy.wechat.serviceopen.service.wechat;
 
-import com.netflix.discovery.converters.Auto;
-import com.yzy.wechat.serviceopen.entity.Wechat;
-import com.yzy.wechat.serviceopen.mapper.WechatMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,8 +11,8 @@ public class WechatService {
 //    @Autowired
 //    private WechatMapper wechatMapper;
 
-    public Wechat findOneByStatus(){
+//    public Wechat findOneByStatus(){
 //        return wechatMapper.findOneByStatus(1);
-        return null;
-    }
+//        return null;
+//    }
 }
