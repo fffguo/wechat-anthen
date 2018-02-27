@@ -3,7 +3,7 @@ package com.yzy.wechat.serviceopen.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.yzy.wechat.serviceopen.entity.Wechat;
 import com.yzy.wechat.serviceopen.service.redis.RedisService;
-import com.yzy.wechat.serviceopen.service.wechat.WechatService;
+import com.yzy.wechat.serviceopen.service.impl.wechat.WechatServiceImpl;
 import com.yzy.wechat.serviceopen.util.HttpSend;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +21,7 @@ public class AnthenController {
 	
 	private static Logger logger = LoggerFactory.getLogger(AnthenController.class);
 	@Autowired
-	private WechatService wechatService;
+	private WechatServiceImpl wechatService;
 	@Autowired
 	private RedisService redisService;
 
@@ -33,6 +33,7 @@ public class AnthenController {
 
 		String redirectUrl = "";
 		try {
+		    //获取pay appid appsecret
 			Wechat payWechat=wechatService.getPayWechat();
 			String yzyWechatAppId=payWechat.getAppid();
 			String yzyWechatAppsecret=payWechat.getAppsecret();
@@ -74,6 +75,7 @@ public class AnthenController {
 	public String getOpenId(HttpServletRequest request){
 		logger.info("正在获取用户授权信息");
 		try {
+		    //获取pay appid appsecret
 			Wechat payWechat=wechatService.getPayWechat();
 			String yzyWechatAppId=payWechat.getAppid();
 			String yzyWechatAppsecret=payWechat.getAppsecret();

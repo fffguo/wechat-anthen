@@ -3,7 +3,7 @@ package com.yzy.wechat.serviceopen.task;
 import com.alibaba.fastjson.JSONObject;
 import com.yzy.wechat.serviceopen.entity.Wechat;
 import com.yzy.wechat.serviceopen.service.redis.RedisService;
-import com.yzy.wechat.serviceopen.service.wechat.WechatService;
+import com.yzy.wechat.serviceopen.service.impl.wechat.WechatServiceImpl;
 import com.yzy.wechat.serviceopen.util.HttpSend;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +19,7 @@ public class AccessTokenTask {
 	@Autowired
 	private RedisService redisService;
 	@Autowired
-	private WechatService wechatService;
-
-
+	private WechatServiceImpl wechatService;
 
 	public final static long SCHEDULED_TIME = 20 * 60 * 1000;
 
@@ -34,10 +32,12 @@ public class AccessTokenTask {
 	public void updateAccessToken() {
 		try {
 			logger.info("正在获取ACCESCE TOKEN");
+			//获取appid appsecret
 			Wechat wechat=wechatService.getWechat();
 			String yzyWechatAppId=wechat.getAppid();
 			String yzyWechatAppsecret=wechat.getAppsecret();
 
+			//获取全局access_token
 			String getTokenUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
 					+ yzyWechatAppId + "&secret=" + yzyWechatAppsecret;
 			String tokenRes = HttpSend.sendGet(getTokenUrl, "json");
@@ -45,6 +45,7 @@ public class AccessTokenTask {
 			logger.info("tokeJson:" + tokeJson.toString());
 			redisService.set("wx_access_token_yzy", tokeJson.getString("access_token"));
 
+			//获取jsapi_ticket
 			String getJsTicketUrl = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token="
 					+ tokeJson.getString("access_token") + "&type=jsapi";
 			String jsTicketRes = HttpSend.sendGet(getJsTicketUrl, "json");
@@ -52,6 +53,7 @@ public class AccessTokenTask {
 			logger.info("jsapi_ticket:" + jsTicketJson.toString());
 			redisService.set("wx_jsapi_ticket_yzy", jsTicketJson.getString("ticket"));
 
+			//获取api_ticket
 			String getApiTicketUrl = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token="
 					+ tokeJson.getString("access_token") + "&type=wx_card";
 			String apiTicketRes = HttpSend.sendGet(getApiTicketUrl, "json");

@@ -7,7 +7,7 @@ server:
 
 spring:
   datasource:
-    name: pay
+    name: pay 
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://10.167.3.151:3306/new_retail_db
     username: wuye
@@ -43,14 +43,6 @@ spring:
     encoding:
       charset: UTF-8
       enabled: true
-
-yzy:
-  wechat:
-    appid: wx111f1b7437e708dd
-    appsecret: e12860f0ce3d177f39e2160a0c8286c1
-  paywechat:
-    appid: wx111f1b7437e708dd
-    appsecret: e12860f0ce3d177f39e2160a0c8286c1
 
 logging:
   config: classpath:logback.xml

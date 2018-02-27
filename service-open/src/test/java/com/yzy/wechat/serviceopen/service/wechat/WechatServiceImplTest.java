@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class WechatServiceTest {
+public class WechatServiceImplTest {
 
 //    @Autowired
 //    private WechatService wechatService;
