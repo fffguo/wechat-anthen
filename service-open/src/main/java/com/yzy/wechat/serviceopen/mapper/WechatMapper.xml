@@ -260,7 +260,7 @@
     <if test="type!=null">
       AND type = #{type}
     </if>
-    GROUP BY
+    ORDER BY
     update_time DESC
     LIMIT 0,1
   </select>

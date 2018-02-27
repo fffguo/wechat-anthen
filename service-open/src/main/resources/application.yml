@@ -7,15 +7,14 @@ server:
 
 spring:
   datasource:
-    name: pay 
+    name: pay
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://10.167.3.151:3306/new_retail_db
     username: wuye
     password: wuye
     # 使用druid数据源
     driver-class-name: com.mysql.jdbc.Driver
-    filters: stat
-    #filters 去掉wall，取消防御sql注入
+    filters: stat,wall
     maxActive: 20
     initialSize: 1
     maxWait: 60000
