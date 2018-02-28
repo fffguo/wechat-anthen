@@ -6,8 +6,8 @@ package com.yzy.wechat.serviceopen.enums;
  * @创建时间：2018/2/27 11:16
  */
 public enum WechatTypeEnum {
-    WECHAT('0',"wechat"),
-    PAY_WECHAT('1',"payWecaht"),
+    WECHAT_TIME_PLAN('0',"定时计划的wechat"),
+    WECHAT('1',"wecaht"),
     ;
     private Character code;
     private String message;

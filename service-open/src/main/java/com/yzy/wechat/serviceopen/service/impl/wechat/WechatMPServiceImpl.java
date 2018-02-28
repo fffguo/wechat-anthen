@@ -31,7 +31,7 @@ public class WechatMPServiceImpl implements WechatMPService{
 
     @Override
     public ServiceResponse<Get3rdSessionResponse> get3rdSession(String code) {
-        Wechat payWechat=wechatService.getPayWechat();
+        Wechat payWechat=wechatService.getWechatTimePlan();
         String yzyWechatAppId=payWechat.getAppid();
         String yzyWechatAppsecret=payWechat.getAppsecret();
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code" ;

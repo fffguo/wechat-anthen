@@ -38,18 +38,18 @@ public class WechatServiceImpl implements WechatService{
     }
 
     @Override
-    public Wechat getPayWechat(){
+    public Wechat getWechatTimePlan(){
         Map<String,Object> map=new HashMap<>();
         map.put("status", WechatStatusEnum.BINDING.getCode());
-        map.put("type", WechatTypeEnum.PAY_WECHAT.getCode());
+        map.put("type", WechatTypeEnum.WECHAT_TIME_PLAN.getCode());
         return wechatMapper.findOneByStatusAndTypeAndAppid(map);
     }
 
     @Override
-    public Wechat getPayWechat(String appid){
+    public Wechat getWechatTimePlan(String appid){
         Map<String,Object> map=new HashMap<>();
         map.put("status", WechatStatusEnum.BINDING.getCode());
-        map.put("type", WechatTypeEnum.PAY_WECHAT.getCode());
+        map.put("type", WechatTypeEnum.WECHAT_TIME_PLAN.getCode());
         map.put("appid", appid);
         return wechatMapper.findOneByStatusAndTypeAndAppid(map);
     }

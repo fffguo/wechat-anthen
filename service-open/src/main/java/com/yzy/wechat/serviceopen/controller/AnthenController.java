@@ -43,7 +43,7 @@ public class AnthenController {
 			String code = request.getParameter("code");
 			String appid=request.getParameter("appid");
 		    //获取pay appid appsecret
-			Wechat payWechat=wechatService.getPayWechat(appid);
+			Wechat payWechat=wechatService.getWechatTimePlan(appid);
 			String yzyWechatAppId=payWechat.getAppid();
 			String yzyWechatAppsecret=payWechat.getAppsecret();
 
@@ -85,7 +85,7 @@ public class AnthenController {
 			String code = request.getParameter("code");
 			String appid =request.getParameter("appid");
 		    //获取pay appid appsecret
-			Wechat payWechat=wechatService.getPayWechat(appid);
+			Wechat payWechat=wechatService.getWechatTimePlan(appid);
 			String yzyWechatAppId=payWechat.getAppid();
 			String yzyWechatAppsecret=payWechat.getAppsecret();
 

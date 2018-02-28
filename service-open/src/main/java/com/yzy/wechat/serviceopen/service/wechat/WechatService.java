@@ -13,7 +13,7 @@ public interface WechatService {
     public Wechat getWechat(String appid);
 
     /** 获取 paywechat appid 和appsecret */
-    public Wechat getPayWechat();
+    public Wechat getWechatTimePlan();
 
-    public Wechat getPayWechat(String appid);
+    public Wechat getWechatTimePlan(String appid);
 }
