@@ -1,12 +1,11 @@
 package com.yzy.wechat.serviceopen.util;
 
 import com.alibaba.druid.support.json.JSONUtils;
-import com.alibaba.fastjson.JSONArray;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.yzy.wechat.serviceopen.util.WXPayUtil.*;
+import static com.yzy.wechat.serviceopen.util.SignUtil.*;
 
 /**
  * @作者：刘富国
