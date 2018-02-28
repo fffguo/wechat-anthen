@@ -1,6 +1,7 @@
 package com.yzy.wechat.serviceopen.service.wechat;
 
 import com.yzy.wechat.serviceopen.entity.Wechat;
+import org.springframework.stereotype.Service;
 
 /**
  * @作者：刘富国

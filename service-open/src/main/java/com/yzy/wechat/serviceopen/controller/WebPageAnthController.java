@@ -6,12 +6,14 @@ import com.yzy.wechat.serviceopen.ResultBean.response.*;
 import com.yzy.wechat.serviceopen.entity.Wechat;
 import com.yzy.wechat.serviceopen.service.redis.RedisService;
 import com.yzy.wechat.serviceopen.service.impl.wechat.WechatServiceImpl;
+import com.yzy.wechat.serviceopen.service.wechat.WechatService;
 import com.yzy.wechat.serviceopen.util.HttpSend;
 import com.yzy.wechat.serviceopen.util.ServiceResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,22 +24,24 @@ import static com.yzy.wechat.serviceopen.util.Request2Map.getParameterMap;
 import static com.yzy.wechat.serviceopen.util.WXPayUtil.generateSignature;
 import static com.yzy.wechat.serviceopen.util.WXPayUtil.isSignatureValid;
 
-
+/**
+ * 类的功能描述：微信公众平台 相关接口
+ * @作者：刘富国
+ * @创建时间：2018/2/28 15:16  */
 @Controller
 public class WebPageAnthController {
 
     private static Logger logger = LoggerFactory.getLogger(WebPageAnthController.class);
     @Autowired
-    private WechatServiceImpl wechatService;
+    private WechatService wechatService;
     @Autowired
     private RedisService redisService;
-
-
 
     @RequestMapping("/getAccessToken")
     @ResponseBody
     /** 获取网页授权 access_token */
     public ServiceResponse<GetAccessTokenResponse> getAccessToken(HttpServletRequest request) {
+        String access_token;
         try {
             logger.info("正在获取网页授权access_token:");
             Map<String, String> map = getParameterMap(request);
@@ -60,12 +64,17 @@ public class WebPageAnthController {
             access_token_url = access_token_url.replace("APPID", appid).replace("SECRET", appsecret).replace("CODE", map.get("code"));
             String tokenRes = HttpSend.sendGet(access_token_url, "json");
             JSONObject tokenJson = (JSONObject) JSONObject.parse(tokenRes);
-            return ServiceResponseUtil.success(new GetAccessTokenResponse(tokenJson.getString("access_token")));
+            access_token=tokenJson.getString("access_token");
+            if(StringUtils.isEmpty(access_token)){
+                logger.error("获取网页授权access_token失败！错误码：{}",tokenJson.getString("errcode"));
+                return ServiceResponseUtil.error("获取网页授权access_token失败！");
+            }
         } catch (Exception e) {
             logger.error("获取网页授权access_token失败！");
             e.printStackTrace();
+            return ServiceResponseUtil.error("获取网页授权access_token失败！");
         }
-        return ServiceResponseUtil.error("获取网页授权access_token失败！");
+        return ServiceResponseUtil.success(new GetAccessTokenResponse(access_token));
     }
 
     @RequestMapping("/getOpenId")

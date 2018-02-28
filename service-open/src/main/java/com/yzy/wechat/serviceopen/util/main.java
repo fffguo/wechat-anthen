@@ -18,6 +18,7 @@ public class main {
         map.put("appid","wx111f1b7437e708dd");
         map.put("mchId","123");
         map.put("signType","MD5");
+        map.put("code","123456");
 
 
 //        String jsonArray= JSONUtils.toJSONString(map);
