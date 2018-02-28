@@ -5,17 +5,17 @@ package com.yzy.wechat.serviceopen.ResultBean.response;
  * @创建时间：2018/2/27 15:34
  */
 public class GetApiTicketResponse {
-    private String wx_api_ticket_yzy;
+    private String api_ticket;
 
-    public GetApiTicketResponse(String wx_api_ticket_yzy) {
-        this.wx_api_ticket_yzy = wx_api_ticket_yzy;
+    public GetApiTicketResponse(String api_ticket) {
+        this.api_ticket = api_ticket;
     }
 
-    public String getWx_api_ticket_yzy() {
-        return wx_api_ticket_yzy;
+    public String getApi_ticket() {
+        return api_ticket;
     }
 
-    public void setWx_api_ticket_yzy(String wx_api_ticket_yzy) {
-        this.wx_api_ticket_yzy = wx_api_ticket_yzy;
+    public void setApi_ticket(String api_ticket) {
+        this.api_ticket = api_ticket;
     }
 }

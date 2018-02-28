@@ -4,10 +4,10 @@ package com.yzy.wechat.serviceopen.ResultBean.response;
  * @作者：刘富国
  * @创建时间：2018/2/27 15:59
  */
-public class GetOpenId {
+public class GetOpenIdResponse {
     String openid;
 
-    public GetOpenId(String openid) {
+    public GetOpenIdResponse(String openid) {
         this.openid = openid;
     }
 

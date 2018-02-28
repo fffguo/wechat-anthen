@@ -2,12 +2,12 @@ package com.yzy.wechat.serviceopen.ResultBean.response;
 
 /**
  * @作者：刘富国
- * @创建时间：2018/2/27 15:44
+ * @创建时间：2018/2/28 14:45
  */
-public class GetGlobalAccessTokenResponse {
+public class GetAccessTokenResponse {
     String access_token;
 
-    public GetGlobalAccessTokenResponse(String access_token) {
+    public GetAccessTokenResponse(String access_token) {
         this.access_token = access_token;
     }
 
