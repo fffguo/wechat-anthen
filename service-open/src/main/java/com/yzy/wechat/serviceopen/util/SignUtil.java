@@ -1,30 +1,17 @@
 package com.yzy.wechat.serviceopen.util;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.StringWriter;
-import java.util.*;
-import java.security.MessageDigest;
-
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import com.yzy.wechat.serviceopen.util.WXPayConstants.SignType;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.security.MessageDigest;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
-public class WXPayUtil {
+
+public class SignUtil {
 
 
     /**

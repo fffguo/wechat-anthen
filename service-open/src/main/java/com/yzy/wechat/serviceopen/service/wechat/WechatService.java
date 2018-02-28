@@ -1,7 +1,7 @@
 package com.yzy.wechat.serviceopen.service.wechat;
 
+import com.yzy.wechat.serviceopen.ResultBean.dto.AccessTokenDTO;
 import com.yzy.wechat.serviceopen.entity.Wechat;
-import org.springframework.stereotype.Service;
 
 /**
  * @作者：刘富国
@@ -9,12 +9,15 @@ import org.springframework.stereotype.Service;
  */
 public interface WechatService {
     /** 获取 wechat appid 和 appsecret */
-    public Wechat getWechat();
+    Wechat getWechat();
 
-    public Wechat getWechat(String appid);
+    Wechat getWechat(String appid);
 
     /** 获取 paywechat appid 和appsecret */
-    public Wechat getWechatTimePlan();
+    Wechat getWechatTimePlan();
 
-    public Wechat getWechatTimePlan(String appid);
+    Wechat getWechatTimePlan(String appid);
+
+    /** 获取网页授权 accesstoken */
+    AccessTokenDTO getWebPageAccessToken(String code,String appid);
 }
