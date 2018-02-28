@@ -10,6 +10,10 @@ public interface WechatService {
     /** 获取 wechat appid 和 appsecret */
     public Wechat getWechat();
 
+    public Wechat getWechat(String appid);
+
     /** 获取 paywechat appid 和appsecret */
     public Wechat getPayWechat();
+
+    public Wechat getPayWechat(String appid);
 }

@@ -9,8 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
-@Component
 @Mapper
+@Component
 public interface WechatMapper {
     long countByExample(WechatExample example);
 
@@ -34,7 +34,6 @@ public interface WechatMapper {
 
     int updateByPrimaryKey(Wechat record);
 
-
     /** 根据状态和wechat类型，获取wechat详情 */
-    Wechat findOneByStatusAndType(Map<String,Object> map);
+    Wechat findOneByStatusAndTypeAndAppid(Map<String,Object> map);
 }

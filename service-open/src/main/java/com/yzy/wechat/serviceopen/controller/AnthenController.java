@@ -39,13 +39,14 @@ public class AnthenController {
 
 		String redirectUrl = "";
 		try {
+			String state = request.getParameter("state");
+			String code = request.getParameter("code");
+			String appid=request.getParameter("appid");
 		    //获取pay appid appsecret
-			Wechat payWechat=wechatService.getPayWechat();
+			Wechat payWechat=wechatService.getPayWechat(appid);
 			String yzyWechatAppId=payWechat.getAppid();
 			String yzyWechatAppsecret=payWechat.getAppsecret();
 
-			String state = request.getParameter("state");
-			String code = request.getParameter("code");
 	        String[] states = state.split("_");
 	        redirectUrl = states[0];
 			String payNo = states[1].split(":")[1];
@@ -81,12 +82,14 @@ public class AnthenController {
 	public ServiceResponse<GetOpenId> getOpenId(HttpServletRequest request){
 		logger.info("正在获取用户授权信息");
 		try {
+			String code = request.getParameter("code");
+			String appid =request.getParameter("appid");
 		    //获取pay appid appsecret
-			Wechat payWechat=wechatService.getPayWechat();
+			Wechat payWechat=wechatService.getPayWechat(appid);
 			String yzyWechatAppId=payWechat.getAppid();
 			String yzyWechatAppsecret=payWechat.getAppsecret();
 
-			String code = request.getParameter("code");
+
 			String access_token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";
 			access_token_url = access_token_url.replace("APPID", yzyWechatAppId).replace("SECRET", yzyWechatAppsecret).replace("CODE", code);
 			String tokenRes = HttpSend.sendGet(access_token_url,"json");

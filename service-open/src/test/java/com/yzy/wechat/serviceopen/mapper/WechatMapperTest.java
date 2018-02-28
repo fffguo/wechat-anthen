@@ -26,6 +26,7 @@ public class WechatMapperTest {
         Map<String,Object> map=new HashMap<>();
         map.put("status",1);
         map.put("type",0);
-        System.out.println(wechatMapper.findOneByStatusAndType(map).toString());
+        map.put("appid","wx111f1b7437e708dd");
+        System.out.println(wechatMapper.findOneByStatusAndTypeAndAppid(map).toString());
     }
 }

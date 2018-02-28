@@ -10,7 +10,7 @@
         </commentGenerator>
         <!--需要配置数据库连接-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://10.167.3.151:3306/new_retail_db?characterEncoding=utf-8&amp;useSSL=false"
+                        connectionURL="jdbc:mysql://10.167.3.151:3306/wechat_anthen?characterEncoding=utf-8&amp;useSSL=false"
                         userId="wuye"
                         password="wuye">
         </jdbcConnection>
@@ -35,8 +35,7 @@
         </javaClientGenerator>
 
         <!--table是指定每个表的生成策略-->
-        <table tableName="wechat" domainObjectName="Wechat"></table>
-        <!--<table tableName="pay_wechat" domainObjectName="PayWechat"></table>-->
-        <!--<table tableName="test" domainObjectName="Test"></table>-->
+        <!--<table tableName="wechat" domainObjectName="Wechat"></table>-->
+        <table tableName="test" domainObjectName="Test"></table>
     </context>
 </generatorConfiguration>

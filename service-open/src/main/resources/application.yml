@@ -9,7 +9,7 @@ spring:
   datasource:
     name: pay
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://10.167.3.151:3306/new_retail_db
+    url: jdbc:mysql://10.167.3.151:3306/wechat_anthen
     username: wuye
     password: wuye
     # 使用druid数据源

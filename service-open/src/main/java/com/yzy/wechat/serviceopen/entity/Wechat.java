@@ -11,7 +11,7 @@ public class Wechat {
 
     private Integer status;
 
-    private Integer type;
+    private String type;
 
     private Date createTime;
 
@@ -49,12 +49,12 @@ public class Wechat {
         this.status = status;
     }
 
-    public Integer getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
     }
 
     public Date getCreateTime() {
@@ -80,7 +80,7 @@ public class Wechat {
                 ", appid='" + appid + '\'' +
                 ", appsecret='" + appsecret + '\'' +
                 ", status=" + status +
-                ", type=" + type +
+                ", type='" + type + '\'' +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 '}';
