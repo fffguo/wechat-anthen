@@ -4,11 +4,11 @@ import com.yzy.wechat.serviceopen.ResultBean.ServiceResponse;
 import com.yzy.wechat.serviceopen.ResultBean.response.Get3rdSessionResponse;
 import com.yzy.wechat.serviceopen.service.wechat.WechatMPService;
 import com.yzy.wechat.serviceopen.util.ServiceResponseUtil;
-import com.yzy.wechat.serviceopen.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -29,10 +29,10 @@ public class WechatMPController {
         logger.info("用户正在获取3rdSession");
         String appid = request.getParameter("appid") ;
         String code = request.getParameter("code");
-        if (StringUtil.isEmpty(appid)) {
+        if (StringUtils.isEmpty(appid)) {
             return ServiceResponseUtil.error("操作失败，appid不能为空！") ;
         }
-        else if (StringUtil.isEmpty(code)) {
+        else if (StringUtils.isEmpty(code)) {
             return ServiceResponseUtil.error("操作失败，code不能为空！") ;
         } else {
             String session = wechatMPService.query3rdSession(appid,code) ;
@@ -48,7 +48,7 @@ public class WechatMPController {
     public ServiceResponse checkSession(HttpServletRequest request) {
         logger.info("用户正在检测3rdSession是否有效");
         String session = request.getParameter("3rd_session");
-        if (StringUtil.isEmpty(session)) {
+        if (StringUtils.isEmpty(session)) {
             return ServiceResponseUtil.error("操作失败，3rd_session不能为空！") ;
         } else {
             Boolean flag = this.wechatMPService.isValid(session) ;
