@@ -9,15 +9,15 @@ import com.yzy.wechat.serviceopen.ResultBean.response.Get3rdSessionResponse;
  */
 public interface WechatMPService {
     /**
-     * 获取3rd_session
+     * 根据code获取3rd_session
      * @return
      */
-    public ServiceResponse<Get3rdSessionResponse> get3rdSession(String code) ;
+    public String query3rdSession(String appid, String code) ;
 
     /**
      * 判断3rd_session是否有效
      * @return
      */
-    public ServiceResponse checkSession(String session) ;
+    public Boolean isValid(String session) ;
 
 }
