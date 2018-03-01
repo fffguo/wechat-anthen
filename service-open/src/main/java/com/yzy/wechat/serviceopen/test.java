@@ -4,22 +4,26 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.yzy.wechat.serviceopen.domain.dto.AccessTokenDTO;
+import com.yzy.wechat.serviceopen.util.SignUtil;
+import com.yzy.wechat.serviceopen.util.WXPayConstants;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @作者：刘富国
  * @创建时间：2018/3/1 9:23
  */
 public class test {
-    public static void main(String[] args) {
-        String json="{\n" +
-                "\"access_token\":\"ACCESS_TOKEN\",\n" +
-                "\"expires_in\":7200,\n" +
-                "\"refresh_token\":\"REFRESH_TOKEN\",\n" +
-                "\"openid\":\"OPENID\",\n" +
-                "\"scope\":\"SCOPE\"\n" +
-                "}";
-        JSONObject jsonObject= (JSONObject) JSONObject.parse(json);
-        AccessTokenDTO accessTokenDTO = JSON.parseObject(json, new TypeReference<AccessTokenDTO>() {});
-        System.out.println(accessTokenDTO.toString());
+    public static void main(String[] args) throws Exception {
+
+        SignUtil signUtil=new SignUtil();
+        Map<String,String> map=new HashMap<>();
+        map.put("appid","wx111f1b7437e708dd");
+        map.put("signType","123");
+        map.put("nonceStr","123456");
+//        map.put("key","123456");
+//        map.put("appid",);
+        System.out.println(signUtil.generateSignature(map,"123456", WXPayConstants.SignType.HMACSHA256));
     }
 }

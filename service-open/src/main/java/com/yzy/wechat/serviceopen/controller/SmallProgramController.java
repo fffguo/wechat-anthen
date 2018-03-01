@@ -1,8 +1,9 @@
 package com.yzy.wechat.serviceopen.controller;
 
 import com.yzy.wechat.serviceopen.domain.ServiceResponse;
-import com.yzy.wechat.serviceopen.domain.response.Get3rdSessionResponse;
-import com.yzy.wechat.serviceopen.service.wechat.WechatMPService;
+import com.yzy.wechat.serviceopen.domain.response.smallProgram.CheckSessionResponse;
+import com.yzy.wechat.serviceopen.domain.response.smallProgram.Get3rdSessionResponse;
+import com.yzy.wechat.serviceopen.service.wechat.SmallProgramService;
 import com.yzy.wechat.serviceopen.util.SRUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,10 +19,10 @@ import javax.servlet.http.HttpServletRequest;
  * Created by 颜德洪 on 2018/2/28 9:23.
  */
 @Controller
-public class WechatMPController {
-    private static Logger logger = LoggerFactory.getLogger(WechatMPController.class);
+public class SmallProgramController {
+    private static Logger logger = LoggerFactory.getLogger(SmallProgramController.class);
     @Autowired
-    private WechatMPService wechatMPService ;
+    private SmallProgramService smallProgramService;
 
     @RequestMapping("/get3rdSession")
     @ResponseBody
@@ -35,7 +36,7 @@ public class WechatMPController {
         else if (StringUtils.isEmpty(code)) {
             return SRUtil.error("操作失败，code不能为空！") ;
         } else {
-            String session = wechatMPService.query3rdSession(appid,code) ;
+            String session = smallProgramService.query3rdSession(appid,code) ;
             if (session != null) {
                 return SRUtil.success(new Get3rdSessionResponse(session)) ;
             }
@@ -45,17 +46,14 @@ public class WechatMPController {
 
     @RequestMapping("/checkSession")
     @ResponseBody
-    public ServiceResponse checkSession(HttpServletRequest request) {
+    public ServiceResponse<CheckSessionResponse> checkSession(HttpServletRequest request) {
         logger.info("用户正在检测3rdSession是否有效");
         String session = request.getParameter("3rd_session");
         if (StringUtils.isEmpty(session)) {
             return SRUtil.error("操作失败，3rd_session不能为空！") ;
         } else {
-            Boolean flag = this.wechatMPService.isValid(session) ;
-            if (flag == true) {
-                return SRUtil.success();
-            }
-            return SRUtil.error("3rd_session已失效，请重新获取！") ;
+            Boolean flag = this.smallProgramService.isValid(session) ;
+            return SRUtil.success(new CheckSessionResponse(flag)) ;
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.yzy.wechat.serviceopen.domain.response;
+package com.yzy.wechat.serviceopen.domain.response.OpenPlatform;
 
 /**
  * @作者：刘富国

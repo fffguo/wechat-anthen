@@ -2,8 +2,8 @@ package com.yzy.wechat.serviceopen.controller;
 
 import com.yzy.wechat.serviceopen.domain.ServiceResponse;
 import com.yzy.wechat.serviceopen.domain.dto.AccessTokenDTO;
-import com.yzy.wechat.serviceopen.domain.response.GetAccessTokenResponse;
-import com.yzy.wechat.serviceopen.domain.response.GetOpenIdResponse;
+import com.yzy.wechat.serviceopen.domain.response.OpenPlatform.GetAccessTokenResponse;
+import com.yzy.wechat.serviceopen.domain.response.OpenPlatform.GetOpenIdResponse;
 import com.yzy.wechat.serviceopen.service.wechat.OpenPlatformService;
 import com.yzy.wechat.serviceopen.util.SRUtil;
 import org.slf4j.Logger;

@@ -4,7 +4,7 @@ package com.yzy.wechat.serviceopen.service.wechat;
  *  小程序实现接口
  * Created by 颜德洪 on 2018/2/27.
  */
-public interface WechatMPService {
+public interface SmallProgramService {
     /**
      * 根据code获取3rd_session
      * @return

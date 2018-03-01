@@ -3,7 +3,7 @@ package com.yzy.wechat.serviceopen.service.impl.wechat;
 import com.alibaba.fastjson.JSONObject;
 import com.yzy.wechat.serviceopen.entity.Wechat;
 import com.yzy.wechat.serviceopen.service.redis.RedisService;
-import com.yzy.wechat.serviceopen.service.wechat.WechatMPService;
+import com.yzy.wechat.serviceopen.service.wechat.SmallProgramService;
 import com.yzy.wechat.serviceopen.service.wechat.WechatService;
 import com.yzy.wechat.serviceopen.util.ExecLinuxCMDUtil;
 import com.yzy.wechat.serviceopen.util.HttpSend;
@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit;
  * Created by 颜德洪 on 2018/2/27.
  */
 @Service
-public class WechatMPServiceImpl implements WechatMPService{
-    private static Logger logger = LoggerFactory.getLogger(WechatMPServiceImpl.class);
+public class SmallProgramServiceImpl implements SmallProgramService {
+    private static Logger logger = LoggerFactory.getLogger(SmallProgramServiceImpl.class);
 
     @Autowired
     private RedisService redisService ;

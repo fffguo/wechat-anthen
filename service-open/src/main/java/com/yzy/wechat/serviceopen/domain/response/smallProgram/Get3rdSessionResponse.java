@@ -1,4 +1,4 @@
-package com.yzy.wechat.serviceopen.domain.response;
+package com.yzy.wechat.serviceopen.domain.response.smallProgram;
 
 /**
  * Created by 颜德洪 on 2018/2/27 16:03.

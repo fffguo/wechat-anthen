@@ -31,7 +31,7 @@ public class AccessTokenTask {
     @Scheduled(fixedDelay=SCHEDULED_TIME)
 	public void updateAccessToken() {
 		try {
-			logger.info("正在获取ACCESCE TOKEN");
+			logger.info("定时计划：获取全局ACCESCE TOKEN");
 			//获取appid appsecret
 			Wechat wechat=wechatService.getWechat();
 			String yzyWechatAppId=wechat.getAppid();

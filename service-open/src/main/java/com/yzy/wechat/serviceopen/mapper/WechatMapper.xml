@@ -7,6 +7,7 @@
     <result column="appsecret" jdbcType="VARCHAR" property="appsecret" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="type" jdbcType="CHAR" property="type" />
+    <result column="key" jdbcType="VARCHAR" property="key" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, appid, appsecret, status, type, create_time, update_time
+    id, appid, appsecret, status, type, key, create_time, update_time
   </sql>
   <select id="selectByExample" parameterType="com.yzy.wechat.serviceopen.entity.WechatExample" resultMap="BaseResultMap">
     select
@@ -103,10 +104,10 @@
   </delete>
   <insert id="insert" parameterType="com.yzy.wechat.serviceopen.entity.Wechat">
     insert into wechat (id, appid, appsecret, 
-      status, type, create_time, 
+      status, type, key, create_time, 
       update_time)
     values (#{id,jdbcType=INTEGER}, #{appid,jdbcType=VARCHAR}, #{appsecret,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, #{key,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.yzy.wechat.serviceopen.entity.Wechat">
@@ -126,6 +127,9 @@
       </if>
       <if test="type != null">
         type,
+      </if>
+      <if test="key != null">
+        key,
       </if>
       <if test="createTime != null">
         create_time,
@@ -149,6 +153,9 @@
       </if>
       <if test="type != null">
         #{type,jdbcType=CHAR},
+      </if>
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -182,6 +189,9 @@
       <if test="record.type != null">
         type = #{record.type,jdbcType=CHAR},
       </if>
+      <if test="record.key != null">
+        key = #{record.key,jdbcType=VARCHAR},
+      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -200,6 +210,7 @@
       appsecret = #{record.appsecret,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
       type = #{record.type,jdbcType=CHAR},
+      key = #{record.key,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -221,6 +232,9 @@
       <if test="type != null">
         type = #{type,jdbcType=CHAR},
       </if>
+      <if test="key != null">
+        key = #{key,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -236,10 +250,12 @@
       appsecret = #{appsecret,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       type = #{type,jdbcType=CHAR},
+      key = #{key,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
 
   <select id="findOneByStatusAndTypeAndAppid" parameterType="map" resultType="com.yzy.wechat.serviceopen.entity.Wechat">
     SELECT
@@ -247,7 +263,8 @@
     appid,
     appsecret,
     status,
-    type,
+    `type`,
+    `key`,
     create_time,
     update_time
     FROM

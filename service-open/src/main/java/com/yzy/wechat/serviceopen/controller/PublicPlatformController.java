@@ -3,6 +3,8 @@ package com.yzy.wechat.serviceopen.controller;
 import com.yzy.wechat.serviceopen.domain.ServiceResponse;
 import com.yzy.wechat.serviceopen.domain.dto.AccessTokenDTO;
 import com.yzy.wechat.serviceopen.domain.response.*;
+import com.yzy.wechat.serviceopen.domain.response.publicPlatform.GetAccessTokenResponse;
+import com.yzy.wechat.serviceopen.domain.response.publicPlatform.GetOpenIdResponse;
 import com.yzy.wechat.serviceopen.service.redis.RedisService;
 import com.yzy.wechat.serviceopen.service.wechat.PublicPlatformService;
 import com.yzy.wechat.serviceopen.service.wechat.WechatService;

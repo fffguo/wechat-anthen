@@ -13,6 +13,8 @@ public class Wechat {
 
     private String type;
 
+    private String key;
+
     private Date createTime;
 
     private Date updateTime;
@@ -57,6 +59,14 @@ public class Wechat {
         this.type = type == null ? null : type.trim();
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key == null ? null : key.trim();
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -81,6 +91,7 @@ public class Wechat {
                 ", appsecret='" + appsecret + '\'' +
                 ", status=" + status +
                 ", type='" + type + '\'' +
+                ", key='" + key + '\'' +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 '}';
