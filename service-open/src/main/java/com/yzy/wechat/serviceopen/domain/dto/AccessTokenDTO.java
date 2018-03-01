@@ -1,11 +1,11 @@
-package com.yzy.wechat.serviceopen.ResultBean.dto;
+package com.yzy.wechat.serviceopen.domain.dto;
 
 /**
  * @作者：刘富国
  * @创建时间：2018/2/28 16:55
  */
 public class AccessTokenDTO {
-    String accessToken;
+    String access_token;
     String expires_in;
     String refresh_token;
     String openid;
@@ -21,12 +21,12 @@ public class AccessTokenDTO {
         this.message = message;
     }
 
-    public String getAccessToken() {
-        return accessToken;
+    public String getAccess_token() {
+        return access_token;
     }
 
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
+    public void setAccess_token(String access_token) {
+        this.access_token = access_token;
     }
 
     public String getExpires_in() {
@@ -59,5 +59,17 @@ public class AccessTokenDTO {
 
     public void setScope(String scope) {
         this.scope = scope;
+    }
+
+    @Override
+    public String toString() {
+        return "AccessTokenDTO{" +
+                "accessToken='" + access_token + '\'' +
+                ", expires_in='" + expires_in + '\'' +
+                ", refresh_token='" + refresh_token + '\'' +
+                ", openid='" + openid + '\'' +
+                ", scope='" + scope + '\'' +
+                ", message='" + message + '\'' +
+                '}';
     }
 }

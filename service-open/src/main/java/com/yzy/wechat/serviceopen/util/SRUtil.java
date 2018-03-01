@@ -1,12 +1,13 @@
 package com.yzy.wechat.serviceopen.util;
 
-import com.yzy.wechat.serviceopen.ResultBean.ServiceResponse;
+import com.yzy.wechat.serviceopen.domain.ServiceResponse;
 
 /**
+ * serviceResponse 的通用工具类
  * @作者：刘富国
  * @创建时间：2018/2/27 15:04
  */
-public class ServiceResponseUtil {
+public class SRUtil {
 
     /** 成功，返回空数据 */
     public static ServiceResponse success(){

@@ -1,8 +1,5 @@
 package com.yzy.wechat.serviceopen.service.wechat;
 
-import com.yzy.wechat.serviceopen.ResultBean.ServiceResponse;
-import com.yzy.wechat.serviceopen.ResultBean.response.Get3rdSessionResponse;
-
 /**
  *  小程序实现接口
  * Created by 颜德洪 on 2018/2/27.

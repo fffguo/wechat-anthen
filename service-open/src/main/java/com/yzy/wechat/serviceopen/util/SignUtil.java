@@ -10,7 +10,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-
+/**
+ * 类的功能描述：签名的通用工具类
+ * @作者：刘富国
+ * @创建时间：2018/3/1 8:47  */
 public class SignUtil {
 
 
@@ -18,7 +21,6 @@ public class SignUtil {
      * 判断签名是否正确，必须包含sign字段，否则返回false。使用MD5签名。
      *
      * @param data Map类型数据
-     * @param key API密钥
      * @return 签名是否正确
      * @throws Exception
      */
@@ -48,7 +50,6 @@ public class SignUtil {
      * 生成签名
      *
      * @param data 待签名数据
-     * @param key API密钥
      * @return 签名
      */
     public static String generateSignature(final Map<String, String> data) throws Exception {

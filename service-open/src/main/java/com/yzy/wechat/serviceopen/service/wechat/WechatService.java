@@ -1,6 +1,6 @@
 package com.yzy.wechat.serviceopen.service.wechat;
 
-import com.yzy.wechat.serviceopen.ResultBean.dto.AccessTokenDTO;
+import com.yzy.wechat.serviceopen.domain.dto.AccessTokenDTO;
 import com.yzy.wechat.serviceopen.entity.Wechat;
 
 /**
@@ -18,6 +18,6 @@ public interface WechatService {
 
     Wechat getWechatTimePlan(String appid);
 
-    /** 获取网页授权 accesstoken */
-    AccessTokenDTO getWebPageAccessToken(String code,String appid);
+
+
 }

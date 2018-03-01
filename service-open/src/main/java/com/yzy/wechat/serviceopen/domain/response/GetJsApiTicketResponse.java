@@ -1,4 +1,4 @@
-package com.yzy.wechat.serviceopen.ResultBean.response;
+package com.yzy.wechat.serviceopen.domain.response;
 
 /**
  * @作者：刘富国

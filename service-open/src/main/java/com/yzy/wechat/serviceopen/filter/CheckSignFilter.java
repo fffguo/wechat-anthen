@@ -1,11 +1,9 @@
 package com.yzy.wechat.serviceopen.filter;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.yzy.wechat.serviceopen.util.ServiceResponseUtil;
+import com.yzy.wechat.serviceopen.util.SRUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
@@ -57,7 +55,7 @@ public class CheckSignFilter implements Filter{
         if(checkSign==false){
             logger.error("签名校验未通过!");
             PrintWriter out=response.getWriter();
-            Object jsonObject=JSONObject.toJSONString(ServiceResponseUtil.error("签名校验未通过!"));
+            Object jsonObject=JSONObject.toJSONString(SRUtil.error("签名校验未通过!"));
             out.print(jsonObject);
         }
     }
