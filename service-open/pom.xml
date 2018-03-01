@@ -96,7 +96,12 @@
             <artifactId>druid-wrapper</artifactId>
             <version>0.2.9</version>
         </dependency>
-
+		<!--wechat加解密需要使用-->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
+		</dependency>
 
 	</dependencies>
 

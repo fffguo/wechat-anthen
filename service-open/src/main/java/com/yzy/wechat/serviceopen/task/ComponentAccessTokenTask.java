@@ -37,7 +37,7 @@ public class ComponentAccessTokenTask {
         }
         String appid=wechat.getAppid();
         String appsecret=wechat.getAppsecret();
-        String ticket="";
+        String ticket=redisService.get("wx_component_verify_ticket_yzy");
         try {
             String data="{\n" +
                     "\"component_appid\":"+appid+" ,\n" +

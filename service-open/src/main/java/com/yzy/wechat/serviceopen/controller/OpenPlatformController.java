@@ -1,21 +1,34 @@
 package com.yzy.wechat.serviceopen.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.qq.weixin.mp.aes.WXBizMsgCrypt;
 import com.yzy.wechat.serviceopen.domain.ServiceResponse;
 import com.yzy.wechat.serviceopen.domain.dto.AccessTokenDTO;
 import com.yzy.wechat.serviceopen.domain.response.OpenPlatform.GetAccessTokenResponse;
 import com.yzy.wechat.serviceopen.domain.response.OpenPlatform.GetOpenIdResponse;
+import com.yzy.wechat.serviceopen.service.redis.RedisService;
 import com.yzy.wechat.serviceopen.service.wechat.OpenPlatformService;
+import com.yzy.wechat.serviceopen.service.wechat.WechatService;
 import com.yzy.wechat.serviceopen.util.SRUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.StringReader;
 
 /**
  * 微信开放平台 相关授权
@@ -28,8 +41,17 @@ public class OpenPlatformController {
 
     private static final Logger logger= LoggerFactory.getLogger(OpenPlatformController.class);
 
+    @Value(value = "${yzy.component.appid}")
+    private String appid;
+    @Value(value = "${yzy.component.token}")
+    private String token;
+    @Value(value = "${yzy.component.encodingAesKey}")
+    private String encodingAesKey;
+
     @Autowired
     private OpenPlatformService openPlatformService;
+    @Autowired
+    private RedisService redisService;
 
     @GetMapping("/getAccessToken")
     @ResponseBody
@@ -74,5 +96,26 @@ public class OpenPlatformController {
             return SRUtil.error("获取openId失败");
         }
         return SRUtil.success(new GetOpenIdResponse(openId));
+    }
+
+    @PostMapping("/acceptTicket")
+    @ResponseBody
+    /** 接收 component_verify_ticket */
+    public void acceptComponentVerifyTicket(HttpServletRequest request){
+
+        try {
+            WXBizMsgCrypt pc = new WXBizMsgCrypt(token, encodingAesKey, appid);
+            String msgSignature=request.getParameter("msgSignature");
+            String timestamp=request.getParameter("timestamp");
+            String nonce=request.getParameter("nonce");
+            String postData=request.getParameter("postData");
+            String result = pc.decryptMsg(msgSignature, timestamp, nonce, postData);
+            logger.info("解密后明文: " + result);
+            JSONObject jsonObject= (JSONObject) JSONObject.parse(result);
+            redisService.set("wx_component_verify_ticket_yzy", (String) jsonObject.get("ComponentVerifyTicket"));
+        }catch (Exception e){
+            logger.error("接收component_verify_ticket 失败：{}",e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

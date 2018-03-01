@@ -51,6 +51,13 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+yzy:
+  component:
+    appid:
+    appsecret:
+    token:
+    encodingAesKey:
+
 
 
 
