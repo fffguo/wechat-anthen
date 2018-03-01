@@ -13,10 +13,15 @@ public interface WechatService {
 
     Wechat getWechat(String appid);
 
-    /** 获取 paywechat appid 和appsecret */
+    /** 获取 定时计划的wechat appid 和appsecret */
     Wechat getWechatTimePlan();
 
     Wechat getWechatTimePlan(String appid);
+
+    /** 获取 服务开发商的 appid 和 appsecret */
+    Wechat getWechatComponent();
+
+    Wechat getWechatComponent(String appid);
 
 
 

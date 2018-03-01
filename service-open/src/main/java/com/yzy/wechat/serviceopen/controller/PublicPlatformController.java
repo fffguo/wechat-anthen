@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
  * @作者：刘富国
  * @创建时间：2018/2/28 15:16  */
 @Controller
+@RequestMapping("/public")
 public class PublicPlatformController {
 
     private static final Logger logger = LoggerFactory.getLogger(PublicPlatformController.class);

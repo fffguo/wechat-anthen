@@ -62,5 +62,22 @@ public class WechatServiceImpl implements WechatService{
         return wechatMapper.findOneByStatusAndTypeAndAppid(map);
     }
 
+    @Override
+    public Wechat getWechatComponent() {
+        Map<String,Object> map=new HashMap<>();
+        map.put("status", WechatStatusEnum.BINDING.getCode());
+        map.put("type", WechatTypeEnum.WECHAT_COMPONENT.getCode());
+        return wechatMapper.findOneByStatusAndTypeAndAppid(map);
+    }
+
+    @Override
+    public Wechat getWechatComponent(String appid) {
+        Map<String,Object> map=new HashMap<>();
+        map.put("status", WechatStatusEnum.BINDING.getCode());
+        map.put("type", WechatTypeEnum.WECHAT_COMPONENT.getCode());
+        map.put("appid", appid);
+        return wechatMapper.findOneByStatusAndTypeAndAppid(map);
+    }
+
 
 }

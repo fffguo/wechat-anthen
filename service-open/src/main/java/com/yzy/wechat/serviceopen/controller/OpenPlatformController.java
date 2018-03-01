@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -30,7 +31,7 @@ public class OpenPlatformController {
     @Autowired
     private OpenPlatformService openPlatformService;
 
-    @RequestMapping("/getAccessToken")
+    @GetMapping("/getAccessToken")
     @ResponseBody
     /** 代公众号发起网页授权 获取access_token*/
     public ServiceResponse<GetAccessTokenResponse> getAccessToken(HttpServletRequest request){
@@ -53,7 +54,7 @@ public class OpenPlatformController {
         return SRUtil.success(new GetAccessTokenResponse(accessToken));
     }
 
-    @RequestMapping("/getOpenId")
+    @GetMapping("/getOpenId")
     @ResponseBody
     /** 代公众号发起网页授权 获取getOpenId */
     public ServiceResponse<GetOpenIdResponse> getOpenId(HttpServletRequest request){

@@ -8,6 +8,7 @@ package com.yzy.wechat.serviceopen.enums;
 public enum WechatTypeEnum {
     WECHAT_TIME_PLAN('0',"定时计划的wechat"),
     WECHAT('1',"wecaht"),
+    WECHAT_COMPONENT('2',"服务开发商的wechat"),
     ;
     private Character code;
     private String message;

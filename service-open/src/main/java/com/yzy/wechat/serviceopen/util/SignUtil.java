@@ -43,7 +43,7 @@ public class SignUtil {
             return false;
         }
         String sign = data.get(WXPayConstants.FIELD_SIGN);
-        return generateSignature(data, signType).equals(sign);
+        return generateSignature(data, signType).equalsIgnoreCase(sign);
     }
 
     /**
