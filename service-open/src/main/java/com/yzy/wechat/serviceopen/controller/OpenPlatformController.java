@@ -34,6 +34,7 @@ public class OpenPlatformController {
     @ResponseBody
     /** 代公众号发起网页授权 获取access_token*/
     public ServiceResponse<GetAccessTokenResponse> getAccessToken(HttpServletRequest request){
+        logger.info("代公众号发起网页授权 获取access_token开始：");
         String accessToken;
         try {
             String appid=request.getParameter("appid");
