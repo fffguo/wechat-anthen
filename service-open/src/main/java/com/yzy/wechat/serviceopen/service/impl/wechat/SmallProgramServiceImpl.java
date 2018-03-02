@@ -42,8 +42,8 @@ public class SmallProgramServiceImpl implements SmallProgramService {
             //生成3rd_session
             String session = ExecLinuxCMDUtil.create3rdSession() ;
             if (session != null) {
-                //session存储2小时
-                redisService.set(session,session_key+","+openid,2 , TimeUnit.HOURS);
+                //session存储30天
+                redisService.set(session,session_key+","+openid,30 , TimeUnit.DAYS);
                 return session;
             }
         } catch (Exception e) {
@@ -54,11 +54,11 @@ public class SmallProgramServiceImpl implements SmallProgramService {
     }
 
     @Override
-    public Boolean isValid(String session) {
+    public String queryOpenid(String session) {
         //redis缓存存在指定的3rd_session值
-        if (!redisService.get(session).isEmpty()) {
-            return true ;
+        if (redisService.get(session).isEmpty()) {
+            return null;
         }
-        return false;
+        return redisService.get(session).split(",")[1] ;
     }
 }

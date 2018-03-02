@@ -12,9 +12,9 @@ public interface SmallProgramService {
     public String query3rdSession(String appid, String code) ;
 
     /**
-     * 判断3rd_session是否有效
-     * @return
+     * 查询Openid根据session
+     * @return 如果session失效，返回null
      */
-    public Boolean isValid(String session) ;
+    public String queryOpenid(String session) ;
 
 }

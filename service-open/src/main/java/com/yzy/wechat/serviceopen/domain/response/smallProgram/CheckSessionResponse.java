@@ -5,17 +5,17 @@ package com.yzy.wechat.serviceopen.domain.response.smallProgram;
  * @创建时间：2018/3/1 15:19
  */
 public class CheckSessionResponse {
-    boolean result;
+    private String openid;
 
-    public CheckSessionResponse(boolean result) {
-        this.result = result;
+    public CheckSessionResponse(String openid) {
+        this.openid = openid;
     }
 
-    public boolean isResult() {
-        return result;
+    public String getOpenid() {
+        return openid;
     }
 
-    public void setResult(boolean result) {
-        this.result = result;
+    public void setOpenid(String openid) {
+        this.openid = openid;
     }
 }

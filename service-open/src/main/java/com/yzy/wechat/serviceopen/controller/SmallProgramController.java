@@ -52,8 +52,8 @@ public class SmallProgramController {
         if (StringUtils.isEmpty(session)) {
             return SRUtil.error("操作失败，3rd_session不能为空！") ;
         } else {
-            Boolean flag = this.smallProgramService.isValid(session) ;
-            return SRUtil.success(new CheckSessionResponse(flag)) ;
+            String openid = this.smallProgramService.queryOpenid(session) ;
+            return SRUtil.success(new CheckSessionResponse(openid)) ;
         }
     }
 }
