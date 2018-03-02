@@ -1,6 +1,7 @@
 package com.yzy.wechat.serviceopen.service.wechat;
 
 import com.yzy.wechat.serviceopen.domain.dto.AccessTokenDTO;
+import com.yzy.wechat.serviceopen.entity.OpenPlatform;
 import com.yzy.wechat.serviceopen.entity.Wechat;
 
 /**
@@ -18,10 +19,10 @@ public interface WechatService {
 
     Wechat getWechatTimePlan(String appid);
 
-    /** 获取 服务开发商的 appid 和 appsecret */
-    Wechat getWechatComponent();
+    /** 获取 服务开发商的 appid  token 和 encodingAesKey */
+    OpenPlatform getWechatComponent();
 
-    Wechat getWechatComponent(String appid);
+    OpenPlatform getWechatComponent(String appid);
 
 
 

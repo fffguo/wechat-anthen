@@ -6,6 +6,7 @@ import com.yzy.wechat.serviceopen.domain.ServiceResponse;
 import com.yzy.wechat.serviceopen.domain.dto.AccessTokenDTO;
 import com.yzy.wechat.serviceopen.domain.response.OpenPlatform.GetAccessTokenResponse;
 import com.yzy.wechat.serviceopen.domain.response.OpenPlatform.GetOpenIdResponse;
+import com.yzy.wechat.serviceopen.entity.OpenPlatform;
 import com.yzy.wechat.serviceopen.service.redis.RedisService;
 import com.yzy.wechat.serviceopen.service.wechat.OpenPlatformService;
 import com.yzy.wechat.serviceopen.service.wechat.WechatService;
@@ -41,17 +42,12 @@ public class OpenPlatformController {
 
     private static final Logger logger= LoggerFactory.getLogger(OpenPlatformController.class);
 
-    @Value(value = "${yzy.component.appid}")
-    private String appid;
-    @Value(value = "${yzy.component.token}")
-    private String token;
-    @Value(value = "${yzy.component.encodingAesKey}")
-    private String encodingAesKey;
-
     @Autowired
     private OpenPlatformService openPlatformService;
     @Autowired
     private RedisService redisService;
+    @Autowired
+    private WechatService wechatService;
 
     @GetMapping("/getAccessToken")
     @ResponseBody
@@ -102,8 +98,16 @@ public class OpenPlatformController {
     @ResponseBody
     /** 接收 component_verify_ticket */
     public void acceptComponentVerifyTicket(HttpServletRequest request){
-
         try {
+            OpenPlatform openPlatform=wechatService.getWechatComponent();
+            if (openPlatform==null){
+                logger.error("open_platform表，无相关记录");
+                return;
+            }
+            String token=openPlatform.getToken();
+            String encodingAesKey=openPlatform.getEncodingAesKey();
+            String appid=openPlatform.getAppid();
+
             WXBizMsgCrypt pc = new WXBizMsgCrypt(token, encodingAesKey, appid);
             String msgSignature=request.getParameter("msgSignature");
             String timestamp=request.getParameter("timestamp");

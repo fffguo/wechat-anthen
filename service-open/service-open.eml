@@ -62,6 +62,7 @@
 	<lib name="Maven: com.netflix.netflix-commons:netflix-commons-util:0.1.1" scope="RUNTIME"/>
 	<lib name="Maven: com.netflix.netflix-commons:netflix-statistics:0.1.1" scope="RUNTIME"/>
 	<levels>
+		<level name="aes-jre1.6 微信加解密" value="project"/>
 		<level name="Maven: org.springframework.boot:spring-boot-starter-web:1.5.10.RELEASE" value="project"/>
 		<level name="Maven: org.springframework.boot:spring-boot-starter:1.5.10.RELEASE" value="project"/>
 		<level name="Maven: org.springframework.boot:spring-boot:1.5.10.RELEASE" value="project"/>
@@ -202,6 +203,5 @@
 		<level name="Maven: com.alibaba.druid:druid-wrapper:0.2.9" value="project"/>
 		<level name="Maven: com.alibaba:druid:0.2.9" value="project"/>
 		<level name="Maven: commons-codec:commons-codec:1.9" value="project"/>
-		<level name="aes-jre1.6 微信加解密" value="project"/>
 	</levels>
 </component>

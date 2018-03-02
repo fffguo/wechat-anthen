@@ -51,7 +51,7 @@ public class CheckSignFilter implements Filter{
         try {
             Map<String, String> map = getParameterMap(request);
             map.remove("body");
-            String key= wechatService.getWechatComponent(map.get("appid")).getKey();
+            String key= wechatService.getWechat(map.get("appid")).getKey();
             String st=map.get("signType");
             WXPayConstants.SignType signType = null;
             //校验 MD5 还是 HMACSHA256

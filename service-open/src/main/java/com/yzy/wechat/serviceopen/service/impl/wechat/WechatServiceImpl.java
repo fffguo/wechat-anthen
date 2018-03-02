@@ -1,10 +1,14 @@
 package com.yzy.wechat.serviceopen.service.impl.wechat;
 
 import com.alibaba.fastjson.JSONObject;
+import com.netflix.discovery.converters.Auto;
 import com.yzy.wechat.serviceopen.domain.dto.AccessTokenDTO;
+import com.yzy.wechat.serviceopen.entity.OpenPlatform;
 import com.yzy.wechat.serviceopen.entity.Wechat;
+import com.yzy.wechat.serviceopen.enums.OpenPlatformStatusEnum;
 import com.yzy.wechat.serviceopen.enums.WechatStatusEnum;
 import com.yzy.wechat.serviceopen.enums.WechatTypeEnum;
+import com.yzy.wechat.serviceopen.mapper.OpenPlatformMapper;
 import com.yzy.wechat.serviceopen.mapper.WechatMapper;
 import com.yzy.wechat.serviceopen.service.wechat.WechatService;
 import com.yzy.wechat.serviceopen.util.HttpSend;
@@ -27,6 +31,8 @@ public class WechatServiceImpl implements WechatService{
 
     @Autowired
     private WechatMapper wechatMapper;
+    @Autowired
+    private OpenPlatformMapper openPlatformMapper;
 
     @Override
     public Wechat getWechat(){
@@ -63,20 +69,18 @@ public class WechatServiceImpl implements WechatService{
     }
 
     @Override
-    public Wechat getWechatComponent() {
+    public OpenPlatform getWechatComponent() {
         Map<String,Object> map=new HashMap<>();
-        map.put("status", WechatStatusEnum.BINDING.getCode());
-        map.put("type", WechatTypeEnum.WECHAT_COMPONENT.getCode());
-        return wechatMapper.findOneByStatusAndTypeAndAppid(map);
+        map.put("status", OpenPlatformStatusEnum.BINDING.getCode());
+        return openPlatformMapper.findOneByAppidAndStatus(map);
     }
 
     @Override
-    public Wechat getWechatComponent(String appid) {
+    public OpenPlatform getWechatComponent(String appid) {
         Map<String,Object> map=new HashMap<>();
-        map.put("status", WechatStatusEnum.BINDING.getCode());
-        map.put("type", WechatTypeEnum.WECHAT_COMPONENT.getCode());
+        map.put("status", OpenPlatformStatusEnum.BINDING.getCode());
         map.put("appid", appid);
-        return wechatMapper.findOneByStatusAndTypeAndAppid(map);
+        return openPlatformMapper.findOneByAppidAndStatus(map);
     }
 
 

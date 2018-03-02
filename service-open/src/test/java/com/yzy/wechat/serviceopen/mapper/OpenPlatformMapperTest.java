@@ -1,6 +1,5 @@
 package com.yzy.wechat.serviceopen.mapper;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,23 +9,24 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.junit.Assert.*;
+
 /**
  * @作者：刘富国
- * @创建时间：2018/2/26 14:12
+ * @创建时间：2018/3/2 9:32
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class WechatMapperTest {
+public class OpenPlatformMapperTest {
 
     @Autowired
-    private WechatMapper wechatMapper;
+    private OpenPlatformMapper openPlatformMapper;
 
     @Test
-    public void findOneByStatus() {
-//        Map<String,Object> map=new HashMap<>();
+    public void findOneByAppidAndStatus() {
+        Map<String,Object> map=new HashMap<>();
 //        map.put("status",1);
-//        map.put("type",2);
-//        map.put("appid","wx111f1b7437e708dd");
-//        System.out.println(wechatMapper.findOneByStatusAndTypeAndAppid(map).toString());
+//        map.put("appid",123);
+//        System.out.println(openPlatformMapper.findOneByAppidAndStatus(map));
     }
 }

@@ -37,5 +37,6 @@
         <!--table是指定每个表的生成策略-->
         <!--<table tableName="wechat" domainObjectName="Wechat"></table>-->
         <table tableName="test" domainObjectName="Test"></table>
+        <!--<table tableName="open_platform" domainObjectName="OpenPlatform"></table>-->
     </context>
 </generatorConfiguration>
