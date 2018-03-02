@@ -18,7 +18,7 @@ import java.io.PrintWriter;
 import java.util.Map;
 
 import static com.yzy.wechat.serviceopen.util.Request2Map.getParameterMap;
-import static com.yzy.wechat.serviceopen.util.SignUtil.isSignatureValid;
+import static com.yzy.wechat.serviceopen.util.WechatUtil.isSignatureValid;
 
 /**
  * @作者：刘富国
@@ -44,6 +44,7 @@ public class CheckSignFilter implements Filter{
         HttpServletRequest request= (HttpServletRequest) servletRequest;
         HttpServletResponse response= (HttpServletResponse) servletResponse;
         request.setCharacterEncoding("utf-8");
+        response.setContentType("text/xml");
         response.setCharacterEncoding("utf-8");
         logger.info("校验签名开始:");
         boolean checkSign=false;

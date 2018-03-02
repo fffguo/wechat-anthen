@@ -34,6 +34,7 @@ public interface OpenPlatformMapper {
 
     int updateByPrimaryKey(OpenPlatform record);
 
+
     /** 通过appid 和 status 查询 一条 开放平台记录 */
     OpenPlatform findOneByAppidAndStatus(Map<String,Object> map);
 }

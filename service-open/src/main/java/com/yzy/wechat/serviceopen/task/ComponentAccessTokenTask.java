@@ -1,6 +1,7 @@
 package com.yzy.wechat.serviceopen.task;
 
 import com.alibaba.fastjson.JSONObject;
+import com.yzy.wechat.serviceopen.entity.OpenPlatform;
 import com.yzy.wechat.serviceopen.entity.Wechat;
 import com.yzy.wechat.serviceopen.service.impl.wechat.WechatServiceImpl;
 import com.yzy.wechat.serviceopen.service.redis.RedisService;
@@ -30,13 +31,13 @@ public class ComponentAccessTokenTask {
     @Scheduled(fixedDelay=SCHEDULED_TIME)
     public void updateAccessToken() {
         logger.info("定时计划：更新第三方平台access_token");
-        Wechat wechat=wechatService.getWechatComponent();
-        if(wechat==null){
-            logger.error("wechat表，无第三方平台 appid appsecret 记录");
+        OpenPlatform openPlatform=wechatService.getWechatComponent();
+        if(openPlatform==null){
+            logger.error("openPlatform，无第三方平台 记录");
             return;
         }
-        String appid=wechat.getAppid();
-        String appsecret=wechat.getAppsecret();
+        String appid=openPlatform.getAppid();
+        String appsecret=openPlatform.getAppsecret();
         String ticket=redisService.get("wx_component_verify_ticket_yzy");
         try {
             String data="{\n" +

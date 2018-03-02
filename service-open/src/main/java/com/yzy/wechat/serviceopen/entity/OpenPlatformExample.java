@@ -235,6 +235,76 @@ public class OpenPlatformExample {
             return (Criteria) this;
         }
 
+        public Criteria andAppsecretIsNull() {
+            addCriterion("appsecret is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppsecretIsNotNull() {
+            addCriterion("appsecret is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppsecretEqualTo(String value) {
+            addCriterion("appsecret =", value, "appsecret");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppsecretNotEqualTo(String value) {
+            addCriterion("appsecret <>", value, "appsecret");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppsecretGreaterThan(String value) {
+            addCriterion("appsecret >", value, "appsecret");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppsecretGreaterThanOrEqualTo(String value) {
+            addCriterion("appsecret >=", value, "appsecret");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppsecretLessThan(String value) {
+            addCriterion("appsecret <", value, "appsecret");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppsecretLessThanOrEqualTo(String value) {
+            addCriterion("appsecret <=", value, "appsecret");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppsecretLike(String value) {
+            addCriterion("appsecret like", value, "appsecret");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppsecretNotLike(String value) {
+            addCriterion("appsecret not like", value, "appsecret");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppsecretIn(List<String> values) {
+            addCriterion("appsecret in", values, "appsecret");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppsecretNotIn(List<String> values) {
+            addCriterion("appsecret not in", values, "appsecret");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppsecretBetween(String value1, String value2) {
+            addCriterion("appsecret between", value1, value2, "appsecret");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppsecretNotBetween(String value1, String value2) {
+            addCriterion("appsecret not between", value1, value2, "appsecret");
+            return (Criteria) this;
+        }
+
         public Criteria andTokenIsNull() {
             addCriterion("token is null");
             return (Criteria) this;

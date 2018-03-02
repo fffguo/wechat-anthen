@@ -7,6 +7,8 @@ public class OpenPlatform {
 
     private String appid;
 
+    private String appsecret;
+
     private String token;
 
     private String encodingAesKey;
@@ -31,6 +33,14 @@ public class OpenPlatform {
 
     public void setAppid(String appid) {
         this.appid = appid == null ? null : appid.trim();
+    }
+
+    public String getAppsecret() {
+        return appsecret;
+    }
+
+    public void setAppsecret(String appsecret) {
+        this.appsecret = appsecret == null ? null : appsecret.trim();
     }
 
     public String getToken() {
@@ -78,6 +88,7 @@ public class OpenPlatform {
         return "OpenPlatform{" +
                 "id=" + id +
                 ", appid='" + appid + '\'' +
+                ", appsecret='" + appsecret + '\'' +
                 ", token='" + token + '\'' +
                 ", encodingAesKey='" + encodingAesKey + '\'' +
                 ", status='" + status + '\'' +

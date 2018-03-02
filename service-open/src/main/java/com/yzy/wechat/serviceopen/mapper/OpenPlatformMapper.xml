@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.yzy.wechat.serviceopen.entity.OpenPlatform">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="appid" jdbcType="VARCHAR" property="appid" />
+    <result column="appsecret" jdbcType="VARCHAR" property="appsecret" />
     <result column="token" jdbcType="VARCHAR" property="token" />
     <result column="encoding_aes_key" jdbcType="VARCHAR" property="encodingAesKey" />
     <result column="status" jdbcType="CHAR" property="status" />
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, appid, token, encoding_aes_key, status, create_time, update_time
+    id, appid, appsecret, token, encoding_aes_key, status, create_time, update_time
   </sql>
   <select id="selectByExample" parameterType="com.yzy.wechat.serviceopen.entity.OpenPlatformExample" resultMap="BaseResultMap">
     select
@@ -102,12 +103,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.yzy.wechat.serviceopen.entity.OpenPlatform">
-    insert into open_platform (id, appid, token, 
-      encoding_aes_key, status, create_time, 
-      update_time)
-    values (#{id,jdbcType=INTEGER}, #{appid,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, 
-      #{encodingAesKey,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+    insert into open_platform (id, appid, appsecret, 
+      token, encoding_aes_key, status, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{appid,jdbcType=VARCHAR}, #{appsecret,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{encodingAesKey,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.yzy.wechat.serviceopen.entity.OpenPlatform">
     insert into open_platform
@@ -117,6 +118,9 @@
       </if>
       <if test="appid != null">
         appid,
+      </if>
+      <if test="appsecret != null">
+        appsecret,
       </if>
       <if test="token != null">
         token,
@@ -140,6 +144,9 @@
       </if>
       <if test="appid != null">
         #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="appsecret != null">
+        #{appsecret,jdbcType=VARCHAR},
       </if>
       <if test="token != null">
         #{token,jdbcType=VARCHAR},
@@ -173,6 +180,9 @@
       <if test="record.appid != null">
         appid = #{record.appid,jdbcType=VARCHAR},
       </if>
+      <if test="record.appsecret != null">
+        appsecret = #{record.appsecret,jdbcType=VARCHAR},
+      </if>
       <if test="record.token != null">
         token = #{record.token,jdbcType=VARCHAR},
       </if>
@@ -197,6 +207,7 @@
     update open_platform
     set id = #{record.id,jdbcType=INTEGER},
       appid = #{record.appid,jdbcType=VARCHAR},
+      appsecret = #{record.appsecret,jdbcType=VARCHAR},
       token = #{record.token,jdbcType=VARCHAR},
       encoding_aes_key = #{record.encodingAesKey,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=CHAR},
@@ -211,6 +222,9 @@
     <set>
       <if test="appid != null">
         appid = #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="appsecret != null">
+        appsecret = #{appsecret,jdbcType=VARCHAR},
       </if>
       <if test="token != null">
         token = #{token,jdbcType=VARCHAR},
@@ -233,6 +247,7 @@
   <update id="updateByPrimaryKey" parameterType="com.yzy.wechat.serviceopen.entity.OpenPlatform">
     update open_platform
     set appid = #{appid,jdbcType=VARCHAR},
+      appsecret = #{appsecret,jdbcType=VARCHAR},
       token = #{token,jdbcType=VARCHAR},
       encoding_aes_key = #{encodingAesKey,jdbcType=VARCHAR},
       status = #{status,jdbcType=CHAR},
@@ -246,6 +261,7 @@
     id,
     appid,
     token,
+    appsecret,
     status,
     encoding_aes_key,
     create_time,
@@ -264,4 +280,5 @@
     update_time DESC
     LIMIT 0,1
   </select>
+
 </mapper>
