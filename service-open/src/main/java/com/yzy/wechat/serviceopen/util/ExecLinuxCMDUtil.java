@@ -25,7 +25,6 @@ public class ExecLinuxCMDUtil {
       StringBuffer sb = new StringBuffer();
       String line;
       while ((line = br.readLine()) != null) {
-        System.out.println(line);
         sb.append(line).append("\n");
       }
       return sb.toString();
