@@ -6,15 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="eureka" />
-        <module name="service-open" />
         <module name="wechat-anthen" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="eureka" target="1.8" />
-      <module name="service-open" target="1.8" />
-      <module name="wechat-anthen" target="1.5" />
+      <module name="wechat-anthen" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
