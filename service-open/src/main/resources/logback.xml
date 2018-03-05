@@ -1,41 +1,44 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
-    <contextName>wechat</contextName>
-    <property name="BASE_HOME" value="/var/log/yzy_wechat_anthen"/><!-- log目录 -->
-    <property name="BACKUP_HOME" value="/var/log/yzy_wechat_anthen"/><!-- log目录 -->
-    <!-- 定义控制台输出 -->
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- 定义过滤器 相比logger内定义优先级高   -->
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>info</level>
-        </filter>
-        <!-- 定义日志格式 -->
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>
-                %date{yyyy-MM-dd HH:mm:ss} %level [%thread] %10logger[%file:%line] - %msg%n
-            </pattern>
-        </layout>
-    </appender>
-    <!-- 访问日志 -->
-    <appender name="ACCESS" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>
-                ${BACKUP_HOME}/wechat-access.%d{yyyyMMdd}.log
-            </FileNamePattern>
-            <MaxHistory>30</MaxHistory>
-        </rollingPolicy>
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>
-                %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n
-            </pattern>
-        </layout>
-    </appender>
+	<contextName>wechat</contextName>
+	<property name="BASE_HOME" value="/var/log/yzy_wechat_anthen" /><!-- 
+		log目录 -->
+	<property name="BACKUP_HOME" value="/var/log/yzy_wechat_anthen" /><!-- 
+		log目录 -->
+	<!-- 定义控制台输出 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- 定义过滤器 相比logger内定义优先级高 -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>info</level>
+		</filter>
+		<!-- 定义日志格式 -->
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>
+				%date{yyyy-MM-dd HH:mm:ss} %level [%thread] %10logger[%file:%line] - %msg%n
+			</pattern>
+		</layout>
+	</appender>
+	<!-- 访问日志 -->
+	<appender name="ACCESS"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>
+				${BACKUP_HOME}/wechat-access.%d{yyyyMMdd}.log
+			</FileNamePattern>
+			<MaxHistory>30</MaxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>
+				%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n
+			</pattern>
+		</layout>
+	</appender>
 
-    <logger name="com.yzy.wechat" additivity="false" level="info">
-        <appender-ref ref="ACCESS"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
+	<logger name="com.yzy.wechat" additivity="false" level="info">
+		<appender-ref ref="ACCESS" />
+		<appender-ref ref="STDOUT" />
+	</logger>
 
-    <root level="info">
-        <appender-ref ref="STDOUT"/>
-    </root>
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+	</root>
 </configuration>

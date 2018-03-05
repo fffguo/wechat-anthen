@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 
 
 @Service
+@SuppressWarnings("unused")
 public class RedisServiceImpl implements RedisService {
 
     @Autowired
@@ -23,7 +24,8 @@ public class RedisServiceImpl implements RedisService {
     @Resource(name = "stringRedisTemplate")
     private ValueOperations<Object, Object> valOpsStr;
 
-    @Autowired
+
+	@Autowired
     private RedisTemplate<Object, Object> redisTemplate;
 
     @Resource(name = "redisTemplate")

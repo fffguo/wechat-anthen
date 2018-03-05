@@ -9,8 +9,10 @@ import java.util.Map;
  * @作者：刘富国
  * @创建时间：2018/2/28 11:36
  */
+@SuppressWarnings(value= {"unchecked","rawtypes"})
 public class Request2Map {
-    public static Map getParameterMap(HttpServletRequest request) {
+	
+	public static Map getParameterMap(HttpServletRequest request) {
         // 参数Map
         Map properties = request.getParameterMap();
         // 返回值Map

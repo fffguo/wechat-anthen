@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by 颜德洪 on 2018/2/28 9:23.
  */
 @Controller
+@SuppressWarnings(value= {"unchecked"})
 public class SmallProgramController {
     private static Logger logger = LoggerFactory.getLogger(SmallProgramController.class);
     @Autowired

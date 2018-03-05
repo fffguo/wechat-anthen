@@ -25,6 +25,7 @@ import static com.yzy.wechat.serviceopen.util.WechatUtil.isSignatureValid;
  * @创建时间：2018/2/28 16:01
  */
 @Component
+@SuppressWarnings(value= {"unchecked"})
 @WebFilter(urlPatterns = "/*",filterName = "checkSignFilter")
 public class CheckSignFilter implements Filter{
 

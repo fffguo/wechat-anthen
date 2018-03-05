@@ -2,7 +2,6 @@ package com.yzy.wechat.serviceopen.task;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yzy.wechat.serviceopen.entity.OpenPlatform;
-import com.yzy.wechat.serviceopen.entity.Wechat;
 import com.yzy.wechat.serviceopen.service.impl.wechat.WechatServiceImpl;
 import com.yzy.wechat.serviceopen.service.redis.RedisService;
 import com.yzy.wechat.serviceopen.util.HttpSend;

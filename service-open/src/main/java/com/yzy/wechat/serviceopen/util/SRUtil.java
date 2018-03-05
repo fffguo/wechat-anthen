@@ -7,10 +7,12 @@ import com.yzy.wechat.serviceopen.domain.ServiceResponse;
  * @作者：刘富国
  * @创建时间：2018/2/27 15:04
  */
+@SuppressWarnings(value= {"unchecked","rawtypes"})
 public class SRUtil {
 
     /** 成功，返回空数据 */
-    public static ServiceResponse success(){
+    
+	public static ServiceResponse success(){
         return success(null);
     }
     /** 成功，返回Object数据 */
@@ -20,7 +22,7 @@ public class SRUtil {
     public static ServiceResponse success(String subMsg, Object result){
         return success(subMsg,"操作成功!",result);
     }
-    public static ServiceResponse success(String subMsg, String msg, Object result){
+	public static ServiceResponse success(String subMsg, String msg, Object result){
         return new ServiceResponse(1,1,subMsg,msg,result);
     }
 
@@ -35,7 +37,7 @@ public class SRUtil {
     public static ServiceResponse error(String subMsg, String msg){
         return error(subMsg,msg,null);
     }
-    public static ServiceResponse error(String subMsg, String msg, Object result){
+	public static ServiceResponse error(String subMsg, String msg, Object result){
         return new ServiceResponse(0,0,subMsg,msg,result);
     }
 }

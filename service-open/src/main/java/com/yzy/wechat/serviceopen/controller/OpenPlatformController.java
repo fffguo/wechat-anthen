@@ -37,6 +37,7 @@ import static com.yzy.wechat.serviceopen.util.WechatUtil.xmlToMap;
  */
 @Controller
 @RequestMapping("/open")
+@SuppressWarnings(value= {"unchecked"})
 public class OpenPlatformController {
 
     private static final Logger logger = LoggerFactory.getLogger(OpenPlatformController.class);
@@ -80,7 +81,7 @@ public class OpenPlatformController {
         try {
             String appid = request.getParameter("appid");
             String code = request.getParameter("code");
-            String state = request.getParameter("state");
+//            String state = request.getParameter("state");
             AccessTokenDTO accessTokenDTO = openPlatformService.getAccessToken(code, appid);
             if (!StringUtils.isEmpty(accessTokenDTO.getMessage())) {
                 return SRUtil.error("获取openid失败，" + accessTokenDTO.getMessage());

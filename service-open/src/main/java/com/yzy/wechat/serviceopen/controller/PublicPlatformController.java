@@ -2,12 +2,9 @@ package com.yzy.wechat.serviceopen.controller;
 
 import com.yzy.wechat.serviceopen.domain.ServiceResponse;
 import com.yzy.wechat.serviceopen.domain.dto.AccessTokenDTO;
-import com.yzy.wechat.serviceopen.domain.response.*;
 import com.yzy.wechat.serviceopen.domain.response.publicPlatform.GetAccessTokenResponse;
 import com.yzy.wechat.serviceopen.domain.response.publicPlatform.GetOpenIdResponse;
-import com.yzy.wechat.serviceopen.service.redis.RedisService;
 import com.yzy.wechat.serviceopen.service.wechat.PublicPlatformService;
-import com.yzy.wechat.serviceopen.service.wechat.WechatService;
 import com.yzy.wechat.serviceopen.util.SRUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,15 +22,14 @@ import javax.servlet.http.HttpServletRequest;
  * @创建时间：2018/2/28 15:16  */
 @Controller
 @RequestMapping("/public")
+@SuppressWarnings(value= {"unchecked"})
 public class PublicPlatformController {
 
     private static final Logger logger = LoggerFactory.getLogger(PublicPlatformController.class);
-    @Autowired
-    private WechatService wechatService;
+
     @Autowired
     private PublicPlatformService publicPlatformService;
-    @Autowired
-    private RedisService redisService;
+
 
 
     @RequestMapping("/getAccessToken")
