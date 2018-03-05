@@ -202,6 +202,6 @@
 		<level name="Maven: com.alibaba.druid:druid-wrapper:0.2.9" value="project"/>
 		<level name="Maven: com.alibaba:druid:0.2.9" value="project"/>
 		<level name="Maven: commons-codec:commons-codec:1.9" value="project"/>
-		<level name="aes-jre1.6 (2)" value="project"/>
+		<level name="aes-jre1.6" value="project"/>
 	</levels>
 </component>
