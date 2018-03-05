@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component LANGUAGE_LEVEL="JDK_1_8" jdk="1.8" jdk_type="JavaSDK">
+<component LANGUAGE_LEVEL="JDK_1_8" inheritJdk="true">
 	<output-test url="file://$MODULE_DIR$/target/test-classes"/>
 	<contentEntry url="file://$MODULE_DIR$">
 		<testFolder url="file://$MODULE_DIR$/src/test/java"/>
@@ -62,7 +62,7 @@
 	<lib name="Maven: com.netflix.netflix-commons:netflix-commons-util:0.1.1" scope="RUNTIME"/>
 	<lib name="Maven: com.netflix.netflix-commons:netflix-statistics:0.1.1" scope="RUNTIME"/>
 	<levels>
-		<level name="aes-jre1.6 微信加解密" value="project"/>
+		<level name="aes-jre1.6" value="project"/>
 		<level name="Maven: org.springframework.boot:spring-boot-starter-web:1.5.10.RELEASE" value="project"/>
 		<level name="Maven: org.springframework.boot:spring-boot-starter:1.5.10.RELEASE" value="project"/>
 		<level name="Maven: org.springframework.boot:spring-boot:1.5.10.RELEASE" value="project"/>
