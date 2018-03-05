@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="aes-jre1.6 (2)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/service-open/src/main/resources/lib/aes-jre1.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/service-open/src/main/resources/lib/aes-jre1.6.jar!/" />
+    </SOURCES>
+  </library>
+</component>
